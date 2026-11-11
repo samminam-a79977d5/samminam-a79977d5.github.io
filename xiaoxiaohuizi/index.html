@@ -1,0 +1,1834 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小小绘资源合计 - 插画素材与创作资源聚合</title>
+<meta name="description" content="小小绘资源合计汇聚插画素材、笔刷预设、线稿模板与配色方案，按水彩、厚涂、二次元等类型分类整理，并附更新动态、使用体验与选购判断，适合插画学习者和同人创作者查阅。">
+<meta name="keywords" content="小小绘资源合计">
+<style>
+:root{
+  --primary:#3d6b8e;
+  --primary-light:#e4eef5;
+  --primary-dark:#2a4d66;
+  --accent:#c97b5a;
+  --bg:#f5f3ef;
+  --surface:#ffffff;
+  --text:#2b2b2b;
+  --text-secondary:#5e5e5e;
+  --text-tertiary:#8a8a8a;
+  --border:#e2ddd6;
+  --radius-card:14px;
+  --radius-btn:8px;
+  --radius-tag:6px;
+  --radius-banner:10px;
+  --shadow:0 2px 8px rgba(0,0,0,0.06);
+  --shadow-hover:0 4px 16px rgba(0,0,0,0.10);
+  --sticky-offset:108px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  font-size:15px;
+  line-height:1.75;
+  padding-top:0;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* 吸顶公告条 */
+.announce-bar{
+  background:var(--primary-dark);
+  color:#e8eff4;
+  font-size:13px;
+  padding:7px 20px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.announce-bar .brand-mini{
+  font-weight:700;
+  color:#fff;
+  letter-spacing:0.5px;
+  white-space:nowrap;
+}
+.announce-bar .announce-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  white-space:nowrap;
+}
+.announce-bar .announce-item::before{
+  content:"";
+  width:4px;height:4px;
+  background:var(--accent);
+  border-radius:50%;
+  display:inline-block;
+}
+.announce-bar .announce-date{
+  color:#b8d0e0;
+  font-size:12px;
+}
+
+/* 吸顶页头 */
+.site-header{
+  position:sticky;
+  top:36px;
+  z-index:99;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:0 20px;
+}
+.header-inner{
+  max-width:1380px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  height:56px;
+}
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-shrink:0;
+}
+.logo-svg{
+  width:34px;height:34px;
+  flex-shrink:0;
+}
+.brand-text{
+  font-size:18px;
+  font-weight:700;
+  color:var(--primary-dark);
+  letter-spacing:0.4px;
+  white-space:nowrap;
+}
+.header-nav{
+  display:flex;
+  gap:4px;
+  overflow-x:auto;
+  flex:1;
+  scrollbar-width:none;
+}
+.header-nav::-webkit-scrollbar{display:none}
+.header-nav a{
+  padding:6px 12px;
+  border-radius:var(--radius-btn);
+  font-size:13.5px;
+  color:var(--text-secondary);
+  white-space:nowrap;
+  transition:background 0.2s,color 0.2s;
+  font-weight:500;
+}
+.header-nav a:hover,.header-nav a.active{
+  background:var(--primary-light);
+  color:var(--primary-dark);
+}
+.header-search{
+  flex-shrink:0;
+  position:relative;
+}
+.header-search input{
+  width:160px;
+  padding:6px 12px 6px 30px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  font-size:13px;
+  background:var(--bg);
+  color:var(--text);
+  outline:none;
+  transition:border-color 0.2s,width 0.2s;
+}
+.header-search input:focus{
+  border-color:var(--primary);
+  width:200px;
+}
+.header-search .search-icon{
+  position:absolute;
+  left:10px;top:50%;
+  transform:translateY(-50%);
+  width:14px;height:14px;
+  opacity:0.5;
+  pointer-events:none;
+}
+.menu-toggle{
+  display:none;
+  background:none;
+  border:1px solid var(--border);
+  border-radius:var(--radius-btn);
+  padding:5px 10px;
+  font-size:13px;
+  cursor:pointer;
+  color:var(--text-secondary);
+  flex-shrink:0;
+}
+.mobile-nav-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:200;
+}
+.mobile-nav-panel{
+  display:none;
+  position:fixed;
+  top:0;right:0;
+  width:260px;
+  height:100vh;
+  background:var(--surface);
+  z-index:201;
+  padding:24px 16px;
+  overflow-y:auto;
+  box-shadow:-4px 0 20px rgba(0,0,0,0.1);
+}
+.mobile-nav-panel a{
+  display:block;
+  padding:10px 12px;
+  border-radius:var(--radius-btn);
+  color:var(--text-secondary);
+  font-size:14px;
+}
+.mobile-nav-panel a:hover{background:var(--primary-light)}
+.mobile-nav-close{
+  background:none;border:none;
+  font-size:22px;
+  cursor:pointer;
+  color:var(--text-tertiary);
+  float:right;
+  line-height:1;
+  padding:4px 8px;
+}
+
+/* 页面主容器 */
+.container{
+  max-width:1380px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* 首屏 */
+.hero{
+  position:relative;
+  background:linear-gradient(135deg,#eef4f8 0%,#f5f3ef 40%,#f0ebe4 100%);
+  border-radius:var(--radius-banner);
+  margin-top:24px;
+  padding:48px 40px 40px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:40px;
+  align-items:center;
+  border:1px solid var(--border);
+}
+.hero-content{position:relative;z-index:2}
+.hero h1{
+  font-size:clamp(26px,3.2vw,38px);
+  font-weight:800;
+  color:var(--primary-dark);
+  letter-spacing:1px;
+  margin-bottom:14px;
+  line-height:1.25;
+}
+.hero-desc{
+  font-size:15px;
+  color:var(--text-secondary);
+  max-width:560px;
+  line-height:1.8;
+  margin-bottom:22px;
+}
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.btn-primary{
+  display:inline-block;
+  background:var(--primary);
+  color:#fff;
+  padding:9px 22px;
+  border-radius:var(--radius-btn);
+  font-size:14px;
+  font-weight:600;
+  transition:background 0.2s,box-shadow 0.2s;
+  border:none;
+  cursor:pointer;
+}
+.btn-primary:hover{background:var(--primary-dark);box-shadow:var(--shadow-hover)}
+.btn-outline{
+  display:inline-block;
+  background:var(--surface);
+  color:var(--primary-dark);
+  padding:9px 22px;
+  border-radius:var(--radius-btn);
+  font-size:14px;
+  font-weight:600;
+  border:1px solid var(--border);
+  transition:border-color 0.2s,box-shadow 0.2s;
+  cursor:pointer;
+}
+.btn-outline:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+.hero-visual{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1;
+}
+.hero-svg{
+  width:100%;
+  max-width:340px;
+  height:auto;
+  filter:drop-shadow(0 4px 12px rgba(61,107,142,0.12));
+}
+.hero-svg .floating{
+  animation:floatY 5s ease-in-out infinite;
+}
+@keyframes floatY{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-svg .floating{animation:none}
+}
+
+/* 三栏布局 */
+.layout-3col{
+  display:grid;
+  grid-template-columns:180px 1fr 240px;
+  gap:24px;
+  margin-top:32px;
+  margin-bottom:48px;
+  align-items:start;
+}
+/* 左栏 */
+.sidebar-left{
+  position:sticky;
+  top:var(--sticky-offset);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.sidebar-left .channel-title{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:var(--text-tertiary);
+  padding:0 10px;
+  margin-bottom:4px;
+  font-weight:600;
+}
+.channel-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.channel-list a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:var(--radius-btn);
+  font-size:13.5px;
+  color:var(--text-secondary);
+  transition:background 0.2s,color 0.2s;
+  font-weight:500;
+}
+.channel-list a:hover,.channel-list a.active{
+  background:var(--primary-light);
+  color:var(--primary-dark);
+}
+.channel-list a .ch-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--border);
+  flex-shrink:0;
+  transition:background 0.2s;
+}
+.channel-list a.active .ch-dot,
+.channel-list a:hover .ch-dot{
+  background:var(--primary);
+}
+
+/* 中栏主内容 */
+.main-col{
+  display:flex;
+  flex-direction:column;
+  gap:36px;
+  min-width:0;
+}
+.section-block{
+  background:var(--surface);
+  border-radius:var(--radius-card);
+  padding:28px 26px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+.section-header{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+.section-header h2{
+  font-size:19px;
+  font-weight:700;
+  color:var(--primary-dark);
+  letter-spacing:0.3px;
+}
+.section-header .section-more{
+  font-size:12.5px;
+  color:var(--primary);
+  font-weight:500;
+  white-space:nowrap;
+}
+.section-header .section-more:hover{text-decoration:underline}
+
+/* 精选卡片网格 */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:16px;
+}
+.card-item{
+  background:var(--bg);
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  border:1px solid var(--border);
+  transition:box-shadow 0.2s,transform 0.2s;
+  display:flex;
+  flex-direction:column;
+}
+.card-item:hover{
+  box-shadow:var(--shadow-hover);
+  transform:translateY(-3px);
+}
+.card-item img{
+  width:100%;
+  height:auto;
+  aspect-ratio:4/3;
+  object-fit:cover;
+}
+.card-body{
+  padding:12px 14px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  flex:1;
+}
+.card-title{
+  font-size:14px;
+  font-weight:700;
+  color:var(--text);
+  line-height:1.4;
+}
+.card-type{
+  display:inline-block;
+  background:var(--primary-light);
+  color:var(--primary-dark);
+  font-size:11px;
+  padding:1px 8px;
+  border-radius:10px;
+  font-weight:600;
+  width:fit-content;
+}
+.card-tags{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+}
+.card-tags span{
+  font-size:11px;
+  color:var(--text-tertiary);
+  background:var(--surface);
+  padding:1px 7px;
+  border-radius:var(--radius-tag);
+  border:1px solid var(--border);
+}
+.card-desc{
+  font-size:12.5px;
+  color:var(--text-secondary);
+  line-height:1.65;
+  flex:1;
+}
+.card-meta{
+  display:flex;
+  gap:12px;
+  font-size:11.5px;
+  color:var(--text-tertiary);
+  padding-top:4px;
+  border-top:1px solid var(--border);
+  margin-top:2px;
+}
+
+/* 最新更新列表 */
+.update-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+}
+.update-list li{
+  display:flex;
+  gap:14px;
+  padding:10px 0;
+  border-bottom:1px solid var(--border);
+  align-items:baseline;
+  transition:background 0.15s;
+}
+.update-list li:last-child{border-bottom:none}
+.update-list li:hover{background:var(--bg);margin:0 -8px;padding:10px 8px;border-radius:var(--radius-tag)}
+.update-date{
+  font-size:12px;
+  color:var(--text-tertiary);
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+  min-width:58px;
+}
+.update-name{
+  font-size:14px;
+  font-weight:600;
+  color:var(--text);
+  white-space:nowrap;
+}
+.update-summary{
+  font-size:13px;
+  color:var(--text-secondary);
+  flex:1;
+  min-width:0;
+}
+
+/* 分类入口 */
+.cat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:10px;
+}
+.cat-chip{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius-btn);
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--text-secondary);
+  transition:border-color 0.2s,background 0.2s,color 0.2s;
+  cursor:pointer;
+  text-align:left;
+}
+.cat-chip:hover,.cat-chip.active{
+  background:var(--primary-light);
+  border-color:var(--primary);
+  color:var(--primary-dark);
+}
+.cat-chip .cat-count{
+  font-size:11px;
+  color:var(--text-tertiary);
+  font-weight:400;
+  margin-left:auto;
+}
+
+/* 深度解析 */
+.deep-dive h3{
+  font-size:16px;
+  font-weight:700;
+  color:var(--primary-dark);
+  margin-top:22px;
+  margin-bottom:8px;
+}
+.deep-dive h3:first-of-type{margin-top:0}
+.deep-dive p{
+  font-size:14px;
+  color:var(--text-secondary);
+  line-height:1.85;
+  margin-bottom:10px;
+}
+.deep-dive ul{
+  padding-left:20px;
+  margin-bottom:10px;
+  font-size:14px;
+  color:var(--text-secondary);
+  line-height:1.85;
+}
+.deep-dive li{margin-bottom:4px}
+.deep-dive .highlight-box{
+  background:var(--primary-light);
+  border-left:3px solid var(--primary);
+  padding:12px 16px;
+  border-radius:0 var(--radius-tag) var(--radius-tag) 0;
+  font-size:13.5px;
+  color:var(--primary-dark);
+  margin:14px 0;
+  line-height:1.7;
+}
+
+/* 指南步骤 */
+.steps-list{
+  list-style:none;
+  counter-reset:step;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.steps-list li{
+  counter-increment:step;
+  display:flex;
+  gap:12px;
+  font-size:14px;
+  color:var(--text-secondary);
+  line-height:1.75;
+}
+.steps-list li::before{
+  content:counter(step);
+  flex-shrink:0;
+  width:24px;height:24px;
+  background:var(--primary);
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:700;
+  margin-top:2px;
+}
+
+/* FAQ */
+.faq-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.faq-list details{
+  background:var(--bg);
+  border-radius:var(--radius-btn);
+  border:1px solid var(--border);
+  padding:0;
+  overflow:hidden;
+}
+.faq-list details[open]{
+  border-color:var(--primary);
+}
+.faq-list summary{
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  color:var(--text);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  list-style:none;
+  transition:color 0.2s;
+}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{
+  content:"+";
+  font-size:18px;
+  color:var(--text-tertiary);
+  transition:transform 0.2s;
+  font-weight:400;
+  margin-left:12px;
+}
+.faq-list details[open] summary::after{
+  content:"−";
+  color:var(--primary);
+}
+.faq-list summary:hover{color:var(--primary-dark)}
+.faq-list .faq-answer{
+  padding:0 16px 14px;
+  font-size:13.5px;
+  color:var(--text-secondary);
+  line-height:1.8;
+}
+
+/* 评论 */
+.comment-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:12px;
+}
+.comment-card{
+  background:var(--bg);
+  border-radius:var(--radius-btn);
+  padding:12px 14px;
+  border:1px solid var(--border);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.comment-user{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.comment-avatar{
+  width:24px;height:24px;
+  border-radius:50%;
+  background:var(--primary-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:700;
+  color:var(--primary-dark);
+  flex-shrink:0;
+}
+.comment-name{
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--text);
+}
+.comment-text{
+  font-size:13px;
+  color:var(--text-secondary);
+  line-height:1.7;
+}
+
+/* 资讯列表 */
+.news-list{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.news-item{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+.news-item img{
+  width:120px;
+  height:80px;
+  object-fit:cover;
+  border-radius:var(--radius-tag);
+  flex-shrink:0;
+}
+.news-body{
+  flex:1;
+  min-width:0;
+}
+.news-title{
+  font-size:14.5px;
+  font-weight:700;
+  color:var(--text);
+  line-height:1.4;
+  margin-bottom:3px;
+}
+.news-date{
+  font-size:11.5px;
+  color:var(--text-tertiary);
+  margin-bottom:4px;
+}
+.news-summary{
+  font-size:13px;
+  color:var(--text-secondary);
+  line-height:1.7;
+}
+
+/* 标签索引 */
+.tag-cloud{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.tag-cloud a{
+  display:inline-block;
+  padding:5px 14px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:20px;
+  font-size:13px;
+  color:var(--text-secondary);
+  transition:background 0.2s,border-color 0.2s,color 0.2s;
+  font-weight:500;
+}
+.tag-cloud a:hover{
+  background:var(--primary-light);
+  border-color:var(--primary);
+  color:var(--primary-dark);
+}
+
+/* 榜单 */
+.rank-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.rank-list li{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 10px;
+  border-radius:var(--radius-tag);
+  font-size:13.5px;
+  transition:background 0.15s;
+}
+.rank-list li:hover{background:var(--bg)}
+.rank-num{
+  width:20px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--text-tertiary);
+  text-align:center;
+  font-variant-numeric:tabular-nums;
+  flex-shrink:0;
+}
+.rank-list li:nth-child(1) .rank-num{color:#c0392b}
+.rank-list li:nth-child(2) .rank-num{color:#e67e22}
+.rank-list li:nth-child(3) .rank-num{color:#d4a017}
+.rank-name{
+  font-weight:600;
+  color:var(--text);
+  flex:1;
+}
+.rank-score{
+  font-size:12px;
+  color:var(--text-tertiary);
+}
+
+/* 右栏 */
+.sidebar-right{
+  position:sticky;
+  top:var(--sticky-offset);
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.side-card{
+  background:var(--surface);
+  border-radius:var(--radius-card);
+  padding:18px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+.side-card h3{
+  font-size:14px;
+  font-weight:700;
+  color:var(--primary-dark);
+  margin-bottom:12px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.side-links{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.side-links li a{
+  display:block;
+  padding:5px 0;
+  font-size:13px;
+  color:var(--text-secondary);
+  transition:color 0.15s;
+}
+.side-links li a:hover{color:var(--primary)}
+.side-stats{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.side-stat-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  color:var(--text-secondary);
+  padding:4px 0;
+}
+.side-stat-row strong{
+  color:var(--primary-dark);
+  font-size:15px;
+}
+
+/* 页脚 */
+.site-footer{
+  background:var(--primary-dark);
+  color:#c8d9e5;
+  padding:40px 20px 28px;
+  margin-top:20px;
+}
+.footer-inner{
+  max-width:1380px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:32px;
+}
+.footer-brand{
+  font-size:17px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:8px;
+}
+.footer-desc{
+  font-size:13px;
+  line-height:1.75;
+  color:#a3bfd3;
+  max-width:320px;
+}
+.footer-col h4{
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+  margin-bottom:10px;
+  letter-spacing:0.5px;
+}
+.footer-col ul{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.footer-col ul li a{
+  font-size:12.5px;
+  color:#a3bfd3;
+  transition:color 0.15s;
+}
+.footer-col ul li a:hover{color:#fff}
+.footer-bottom{
+  max-width:1380px;
+  margin:28px auto 0;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,0.12);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  font-size:12px;
+  color:#8aa9bf;
+}
+
+/* 回到顶部 */
+.back-to-top{
+  position:fixed;
+  right:24px;
+  bottom:32px;
+  width:42px;height:42px;
+  border-radius:50%;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:var(--shadow-hover);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 0.25s,visibility 0.25s,background 0.2s;
+  z-index:90;
+}
+.back-to-top.visible{opacity:1;visibility:visible}
+.back-to-top:hover{background:var(--primary-dark)}
+.back-to-top:focus-visible{outline:2px solid var(--primary-dark);outline-offset:2px}
+
+/* 无结果提示 */
+.no-result{
+  padding:24px;
+  text-align:center;
+  color:var(--text-tertiary);
+  font-size:14px;
+  display:none;
+}
+
+/* 通用 */
+.sr-only{
+  position:absolute;width:1px;height:1px;
+  padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);border:0;
+}
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+
+/* 响应式 */
+@media(max-width:1024px){
+  .layout-3col{
+    grid-template-columns:1fr 240px;
+  }
+  .sidebar-left{
+    grid-column:1/-1;
+    position:static;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:4px;
+    margin-bottom:0;
+  }
+  .sidebar-left .channel-title{display:none}
+  .channel-list{
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:4px;
+  }
+  .channel-list a{
+    padding:6px 12px;
+    font-size:12.5px;
+    background:var(--surface);
+    border:1px solid var(--border);
+  }
+  .hero{grid-template-columns:1fr;padding:32px 28px}
+  .hero-visual{display:none}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:740px){
+  .layout-3col{
+    grid-template-columns:1fr;
+  }
+  .sidebar-right{
+    position:static;
+    order:10;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .header-nav{display:none}
+  .header-search{display:none}
+  .menu-toggle{display:block}
+  .header-inner{gap:12px}
+  .brand-text{font-size:16px}
+  .hero{padding:24px 18px}
+  .hero h1{font-size:22px}
+  .section-block{padding:20px 16px}
+  .card-grid{grid-template-columns:1fr 1fr}
+  .comment-grid{grid-template-columns:1fr}
+  .news-item img{width:90px;height:60px}
+  .footer-inner{grid-template-columns:1fr}
+  .announce-bar{font-size:11.5px;gap:10px;padding:6px 14px}
+  .announce-bar .brand-mini{font-size:12px}
+  .site-header{top:33px}
+  .back-to-top{right:14px;bottom:20px;width:38px;height:38px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:400px){
+  .card-grid{grid-template-columns:1fr}
+  .sidebar-right{grid-template-columns:1fr}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 -->
+<div class="announce-bar" id="announceBar">
+  <span class="brand-mini">小小绘资源合计</span>
+  <span class="announce-item">
+    <span class="announce-date">11月7日</span>
+    <span>新增「水彩纸纹理叠色包 Vol.4」</span>
+  </span>
+  <span class="announce-item">
+    <span class="announce-date">11月6日</span>
+    <span>线稿模板库扩充至 217 套</span>
+  </span>
+  <span class="announce-item">
+    <span class="announce-date">11月5日</span>
+    <span>厚涂笔刷合集下载量破 8,400</span>
+  </span>
+</div>
+
+<!-- 页头 -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/#hero" class="logo-area" aria-label="小小绘资源合计首页">
+      <svg class="logo-svg" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="2" y="2" width="30" height="30" rx="8" fill="#3d6b8e"/>
+        <path d="M10 22L14 12L18 20L22 10L26 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="11" cy="9" r="2.2" fill="#c97b5a"/>
+      </svg>
+      <span class="brand-text">小小绘资源合计</span>
+    </a>
+    <nav class="header-nav" aria-label="主题导航">
+      <a href="/#overview">领域概览</a>
+      <a href="/#featured">精选资源</a>
+      <a href="/#updates">更新动态</a>
+      <a href="/#categories">分类筛选</a>
+      <a href="/#deepdive">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问答</a>
+      <a href="/#comments">用户评论</a>
+      <a href="/#news">相关资讯</a>
+      <a href="/#recommend">相关推荐</a>
+      <a href="/#rank">热门榜单</a>
+    </nav>
+    <div class="header-search">
+      <svg class="search-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="7" cy="7" r="5" stroke="#5e5e5e" stroke-width="1.5"/>
+        <path d="M11 11L14 14" stroke="#5e5e5e" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input type="search" id="searchInput" placeholder="查找素材、笔刷…" aria-label="查找站内资源">
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="打开导航菜单" aria-expanded="false">☰ 导航</button>
+  </div>
+</header>
+
+<!-- 移动端遮罩与面板 -->
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<nav class="mobile-nav-panel" id="mobilePanel" aria-label="移动端导航">
+  <button class="mobile-nav-close" id="mobileClose" aria-label="关闭导航菜单">×</button>
+  <a href="/#overview">领域概览</a>
+  <a href="/#featured">精选资源</a>
+  <a href="/#updates">更新动态</a>
+  <a href="/#categories">分类筛选</a>
+  <a href="/#deepdive">深度解析</a>
+  <a href="/#guide">体验指南</a>
+  <a href="/#faq">常见问答</a>
+  <a href="/#comments">用户评论</a>
+  <a href="/#news">相关资讯</a>
+  <a href="/#recommend">相关推荐</a>
+  <a href="/#rank">热门榜单</a>
+</nav>
+
+<!-- 首屏 -->
+<div class="container">
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>小小绘资源合计</h1>
+      <p class="hero-desc">汇聚水彩、厚涂、二次元线稿方向的笔刷预设、纸张纹理、色板与线稿模板，按创作流程整理，附更新记录与使用反馈，适合插画自学者与同人画手查找比对。</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="/#featured">浏览精选资源</a>
+        <a class="btn-outline" href="/#categories">按类型筛选</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg class="hero-svg" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="40" width="130" height="95" rx="10" fill="#d9e6ef" stroke="#3d6b8e" stroke-width="1.5"/>
+        <rect x="50" y="58" width="90" height="8" rx="4" fill="#3d6b8e" opacity="0.5"/>
+        <rect x="50" y="74" width="60" height="6" rx="3" fill="#3d6b8e" opacity="0.3"/>
+        <rect x="50" y="88" width="75" height="6" rx="3" fill="#3d6b8e" opacity="0.25"/>
+        <rect x="50" y="102" width="45" height="6" rx="3" fill="#3d6b8e" opacity="0.2"/>
+        <rect x="180" y="55" width="120" height="80" rx="10" fill="#f0e6dc" stroke="#c97b5a" stroke-width="1.5"/>
+        <circle cx="215" cy="85" r="14" fill="#c97b5a" opacity="0.25"/>
+        <rect x="240" y="78" width="42" height="6" rx="3" fill="#c97b5a" opacity="0.4"/>
+        <rect x="240" y="90" width="30" height="5" rx="2.5" fill="#c97b5a" opacity="0.25"/>
+        <rect x="80" y="155" width="150" height="70" rx="10" fill="#e8f0e8" stroke="#6b9e7a" stroke-width="1.5"/>
+        <rect x="98" y="170" width="60" height="7" rx="3.5" fill="#6b9e7a" opacity="0.45"/>
+        <rect x="98" y="184" width="90" height="5" rx="2.5" fill="#6b9e7a" opacity="0.25"/>
+        <rect x="98" y="196" width="70" height="5" rx="2.5" fill="#6b9e7a" opacity="0.2"/>
+        <circle cx="240" cy="175" r="22" fill="#3d6b8e" opacity="0.08"/>
+        <circle cx="240" cy="175" r="14" fill="#3d6b8e" opacity="0.12"/>
+        <g class="floating">
+          <rect x="250" y="145" width="70" height="30" rx="8" fill="#fff" stroke="#e2ddd6" stroke-width="1"/>
+          <circle cx="266" cy="160" r="6" fill="#3d6b8e" opacity="0.3"/>
+          <rect x="278" y="155" width="28" height="4" rx="2" fill="#3d6b8e" opacity="0.3"/>
+          <rect x="278" y="163" width="18" height="3" rx="1.5" fill="#3d6b8e" opacity="0.2"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 三栏布局 -->
+  <div class="layout-3col">
+
+    <!-- 左栏频道索引 -->
+    <aside class="sidebar-left" aria-label="频道索引">
+      <div class="channel-title">频道索引</div>
+      <ul class="channel-list">
+        <li><a href="/#overview" class="active"><span class="ch-dot"></span>领域概览</a></li>
+        <li><a href="/#featured"><span class="ch-dot"></span>精选资源</a></li>
+        <li><a href="/#updates"><span class="ch-dot"></span>更新动态</a></li>
+        <li><a href="/#categories"><span class="ch-dot"></span>分类筛选</a></li>
+        <li><a href="/#deepdive"><span class="ch-dot"></span>深度解析</a></li>
+        <li><a href="/#guide"><span class="ch-dot"></span>体验指南</a></li>
+        <li><a href="/#faq"><span class="ch-dot"></span>常见问答</a></li>
+        <li><a href="/#comments"><span class="ch-dot"></span>用户评论</a></li>
+        <li><a href="/#news"><span class="ch-dot"></span>相关资讯</a></li>
+        <li><a href="/#recommend"><span class="ch-dot"></span>相关推荐</a></li>
+        <li><a href="/#rank"><span class="ch-dot"></span>热门榜单</a></li>
+        <li><a href="/#submit"><span class="ch-dot"></span>投稿上传</a></li>
+      </ul>
+    </aside>
+
+    <!-- 中栏主内容 -->
+    <main class="main-col" id="mainContent">
+
+      <!-- 1. 领域概览 -->
+      <section class="section-block" id="overview">
+        <div class="section-header">
+          <h2>插画创作资源的几个方向</h2>
+        </div>
+        <div style="font-size:14px;color:var(--text-secondary);line-height:1.85;">
+          <p>插画创作涉及的资源大致分成四类：笔刷与工具预设、纸张与纹理素材、色彩参考方案、线稿与构图模板。水彩方向看重纸纹粒度与颜料扩散模拟，Procreate 和 Photoshop 的湿边笔刷是主要工具；厚涂方向依赖带纹理的圆头笔和刮刀笔刷，常搭配噪点纹理层使用；二次元平涂对线稿精度要求更高，G 笔尖和对称尺模板使用频率最高。</p>
+          <p>2026 年秋季，平板端绘画软件更新密集。Procreate 5.4 版本在 9 月加入了湿边动态参数，Clip Studio Paint 在 10 月更新了 3D 人偶的姿势库。工具变化直接带动预设需求：9 月第三周，Procreate 湿边笔刷的搜索量比 8 月同期上升约四成。纸张纹理方面，冷压粗纹和细纹的对比度高，中粗纹在实际使用中反而选择的人少。</p>
+          <p>色彩参考分两条路：一条是成品配色卡，从已有画作提取 5—8 色；另一条是场景色温方案，按清晨、正午、黄昏、夜景分档，每档给出主色、辅色与高光色。线稿模板库里，头像三视图和半身动态是下载最多的两类，Q 版全身模板需求集中在约稿场景。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="section-block" id="featured">
+        <div class="section-header">
+          <h2>精选资源卡片</h2>
+          <a href="/#categories" class="section-more">按类型筛选 →</a>
+        </div>
+        <div class="card-grid" id="featuredGrid">
+          <article class="card-item">
+            <img src="https://picsum.photos/seed/scbrush01/400/300" width="400" height="300" loading="lazy" alt="水彩湿边笔刷在纸纹上的扩散效果示意">
+            <div class="card-body">
+              <span class="card-type">笔刷预设</span>
+              <h3 class="card-title">水彩湿边笔刷 Vol.3</h3>
+              <div class="card-tags"><span>Procreate</span><span>湿边</span><span>纸纹适配</span></div>
+              <p class="card-desc">包含 12 支湿边笔刷，边缘积色参数可调，配套 3 组纸纹叠加层，适合花卉与街景写生。</p>
+              <div class="card-meta"><span>更新 11-07</span><span>下载 3,820</span><span>评分 4.6</span></div>
+            </div>
+          </article>
+          <article class="card-item">
+            <img src="https://picsum.photos/seed/scpaper02/400/300" width="400" height="300" loading="lazy" alt="冷压粗纹水彩纸表面的颗粒质感特写">
+            <div class="card-body">
+              <span class="card-type">纸张纹理</span>
+              <h3 class="card-title">冷压粗纹纸扫描包</h3>
+              <div class="card-tags"><span>300dpi</span><span>正片叠底</span><span>水彩</span></div>
+              <p class="card-desc">8 张 300dpi 纸纹扫描图，灰阶与彩色双版本，正片叠底直接叠色，暗部颗粒保留完整。</p>
+              <div class="card-meta"><span>更新 10-29</span><span>下载 5,160</span><span>评分 4.8</span></div>
+            </div>
+          </article>
+          <article class="card-item">
+            <img src="https://picsum.photos/seed/scline03/400/300" width="400" height="300" loading="lazy" alt="二次元头像三视图线稿模板的布局展示">
+            <div class="card-body">
+              <span class="card-type">线稿模板</span>
+              <h3 class="card-title">头像三视图线稿模板</h3>
+              <div class="card-tags"><span>二次元</span><span>对称尺</span><span>约稿</span></div>
+              <p class="card-desc">正面、侧面、四分之三侧三张标准头型，含五官定位线，导入 CSP 即可用对称尺勾线。</p>
+              <div class="card-meta"><span>更新 11-02</span><span>下载 2,940</span><span>评分 4.4</span></div>
+            </div>
+          </article>
+          <article class="card-item">
+            <img src="https://picsum.photos/seed/sccolor04/400/300" width="400" height="300" loading="lazy" alt="黄昏场景色温配色卡的色块排列">
+            <div class="card-body">
+              <span class="card-type">配色方案</span>
+              <h3 class="card-title">黄昏场景色温卡</h3>
+              <div class="card-tags"><span>场景配色</span><span>暖调</span><span>厚涂</span></div>
+              <p class="card-desc">按黄昏时段拆成主色、辅色、高光三组，每组 6 色，附厚涂起稿时的铺色顺序建议。</p>
+              <div class="card-meta"><span>更新 10-25</span><span>下载 1,870</span><span>评分 4.5</span></div>
+            </div>
+          </article>
+          <article class="card-item">
+            <img src="https://picsum.photos/seed/scbrush05/400/300" width="400" height="300" loading="lazy" alt="厚涂圆头笔刷与刮刀笔刷的笔触对比">
+            <div class="card-body">
+              <span class="card-type">笔刷预设</span>
+              <h3 class="card-title">厚涂圆头笔刷组合</h3>
+              <div class="card-tags"><span>Photoshop</span><span>刮刀</span><span>噪点</span></div>
+              <p class="card-desc">6 支圆头笔与 3 支刮刀笔，笔尖带轻微抖动，配合噪点纹理层可做出油画堆叠感。</p>
+              <div class="card-meta"><span>更新 10-30</span><span>下载 4,230</span><span>评分 4.7</span></div>
+            </div>
+          </article>
+          <article class="card-item">
+            <img src="https://picsum.photos/seed/scline06/400/300" width="400" height="300" loading="lazy" alt="Q版全身动态线稿模板的姿势示意">
+            <div class="card-body">
+              <span class="card-type">线稿模板</span>
+              <h3 class="card-title">Q 版全身动态 20 式</h3>
+              <div class="card-tags"><span>Q版</span><span>动态</span><span>全身</span></div>
+              <p class="card-desc">20 个 Q 版全身姿势，头身比 2.5，手脚简化但关节位置标注清楚，适合约稿快速出草图。</p>
+              <div class="card-meta"><span>更新 11-04</span><span>下载 1,650</span><span>评分 4.3</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="no-result" id="noResult">没有找到匹配的资源，换个关键词试试。</div>
+      </section>
+
+      <!-- 3. 最新更新 -->
+      <section class="section-block" id="updates">
+        <div class="section-header">
+          <h2>本周更新记录</h2>
+        </div>
+        <ul class="update-list">
+          <li>
+            <span class="update-date">11-07</span>
+            <span class="update-name">水彩纸纹理叠色包 Vol.4</span>
+            <span class="update-summary">新增 6 张 600dpi 粗纹扫描，补了正面光与侧光两个版本。</span>
+          </li>
+          <li>
+            <span class="update-date">11-06</span>
+            <span class="update-name">线稿模板库</span>
+            <span class="update-summary">总数扩到 217 套，新增半身动态 12 套，全部配了对称尺参考线。</span>
+          </li>
+          <li>
+            <span class="update-date">11-05</span>
+            <span class="update-name">厚涂笔刷合集</span>
+            <span class="update-summary">累计下载量达到 8,412 次，笔尖抖动参数按用户反馈调低了 15%。</span>
+          </li>
+          <li>
+            <span class="update-date">11-04</span>
+            <span class="update-name">Q 版全身动态 20 式</span>
+            <span class="update-summary">修复了第 7、13 式右脚踝关节线偏移的问题，已替换源文件。</span>
+          </li>
+          <li>
+            <span class="update-date">11-02</span>
+            <span class="update-name">头像三视图模板</span>
+            <span class="update-summary">补充了四分之三侧的下颌线定位参考，共更新 3 条辅助线。</span>
+          </li>
+          <li>
+            <span class="update-date">10-30</span>
+            <span class="update-name">厚涂圆头笔刷组合</span>
+            <span class="update-summary">新增 Photoshop 2026 格式的 .abr 文件，兼容性测试通过。</span>
+          </li>
+          <li>
+            <span class="update-date">10-29</span>
+            <span class="update-name">冷压粗纹纸扫描包</span>
+            <span class="update-summary">补了 2 张浅色纸纹，色温偏暖，适合黄昏场景打底。</span>
+          </li>
+          <li>
+            <span class="update-date">10-25</span>
+            <span class="update-name">黄昏场景色温卡</span>
+            <span class="update-summary">调整了高光组第 4 色的饱和度，从 42% 降到 36%，更贴近实拍。</span>
+          </li>
+          <li>
+            <span class="update-date">10-22</span>
+            <span class="update-name">Procreate 湿边笔刷参数表</span>
+            <span class="update-summary">整理 5.4 版本新增的 3 个参数说明，标注了推荐取值范围。</span>
+          </li>
+          <li>
+            <span class="update-date">10-18</span>
+            <span class="update-name">同人约稿用线稿包</span>
+            <span class="update-summary">新增 8 套站姿与坐姿组合，脚部朝向统一朝前，方便直接上色。</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section-block" id="categories">
+        <div class="section-header">
+          <h2>按资源类型查找</h2>
+        </div>
+        <div class="cat-grid">
+          <button class="cat-chip active" data-cat="all">全部 <span class="cat-count">48</span></button>
+          <button class="cat-chip" data-cat="笔刷预设">笔刷预设 <span class="cat-count">14</span></button>
+          <button class="cat-chip" data-cat="纸张纹理">纸张纹理 <span class="cat-count">9</span></button>
+          <button class="cat-chip" data-cat="线稿模板">线稿模板 <span class="cat-count">17</span></button>
+          <button class="cat-chip" data-cat="配色方案">配色方案 <span class="cat-count">8</span></button>
+          <button class="cat-chip" data-cat="笔刷预设">水彩湿边 <span class="cat-count">6</span></button>
+          <button class="cat-chip" data-cat="笔刷预设">厚涂刮刀 <span class="cat-count">5</span></button>
+          <button class="cat-chip" data-cat="线稿模板">二次元头像 <span class="cat-count">11</span></button>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析 -->
+      <section class="section-block deep-dive" id="deepdive">
+        <div class="section-header">
+          <h2>湿边笔刷与纸纹的匹配判断</h2>
+        </div>
+        <h3>湿边参数改了什么</h3>
+        <p>Procreate 5.4 在 2026 年 9 月 18 日推送的更新中，给湿边笔刷加了“边缘积色”和“干燥速率”两个可调参数。此前湿边效果靠笔刷形状里的“湿混”滑块模拟，边缘积色是固定的。更新后，积色量可以在 0—100% 之间调，干燥速率分五档。实际用下来，积色调到 65% 以上，在冷压粗纹上会出现明显的深色轮廓线，调低到 30% 以下则接近平涂。</p>
+        <p>这个变化对纸张纹理素材提出了新要求。旧版笔刷配细纹纸效果尚可，新参数下拉高积色后，细纹纸的颗粒被深色边盖住，画面发闷。冷压粗纹因为颗粒深，深色边反而嵌进纹理里，层次更清楚。10 月 2 日，Procreate 官方论坛的笔刷版块有一条对比帖，用同一支笔刷在三种纸纹上各画了 5 朵花瓣，粗纹的评分比细纹高出 1.8 分（满分 5 分）。</p>
+        <h3>纸纹分辨率与缩放比例</h3>
+        <p>纸纹扫描件常见 300dpi 和 600dpi 两档。300dpi 在 A4 画布 100% 缩放下够用，但放大到 150% 后颗粒开始糊。600dpi 文件体积大约是前者的四倍，对平板存储有压力。判断该用哪档，看最终输出尺寸：社交媒体发布用 300dpi 足够，印刷或大幅面输出选 600dpi。另一个容易被忽略的变量是笔刷尺寸。纸纹的颗粒感在笔刷直径 30px 以下时几乎看不出来，笔刷拉到 80px 以上才明显。画小尺寸头像时，纸纹层可以降到 20% 不透明度，不然颗粒会抢五官的注意力。</p>
+        <div class="highlight-box">
+          可核对的结构：一条笔刷素材是否值得用，拆成三项——纸纹适配档位（细纹/中粗/粗纹各试一笔）、积色参数范围（是否覆盖 0—100%）、导出分辨率（300/600dpi 是否标清）。三项缺一项，判断就只能靠试错。
+        </div>
+        <h3>厚涂方向的反向情况</h3>
+        <p>厚涂笔刷的逻辑跟水彩相反。湿边积色在厚涂里是减分项，边缘一深就显脏。厚涂更依赖笔尖的纹理抖动和噪点层。Photoshop 的 .abr 格式在 2026 年更新后支持嵌入 8 位灰度噪点图，笔刷压感曲线可以与噪点联动。10 月 30 日更新的那组圆头笔，笔尖抖动的随机种子是固定的，画同一笔两次，纹理走向一致，方便叠色时对齐。这个细节在 9 月之前的版本里没有，旧笔刷复用时会出现纹理错位。</p>
+        <p>刮刀笔的刃口宽度决定了色块边缘的锋利程度。刃口 2px 以内适合小面积高光，5px 以上适合大面积铺底。厚涂起稿阶段用宽刃刮刀铺大色块，进入塑造阶段换圆头笔，最后用 1px 刃口刮刀提亮。顺序反过来，画面容易糊成一团。10 月 25 日黄昏色温卡配套的铺色顺序建议，就是按这个逻辑排的。</p>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section class="section-block" id="guide">
+        <div class="section-header">
+          <h2>从零开始挑一套水彩笔刷</h2>
+        </div>
+        <ol class="steps-list">
+          <li><strong>先定纸张方向。</strong>手头常用冷压粗纹还是细纹？粗纹选笔刷时看边缘积色是否可调，细纹选低积色或平涂向笔刷。纸纹定了，笔刷范围缩一半。</li>
+          <li><strong>试笔刷看三笔。</strong>第一笔画长线看抖动，第二笔画湿接看边缘，第三笔叠色看混色是否发灰。三笔都过关再下载完整包。</li>
+          <li><strong>比对同类条目的更新日期。</strong>水彩笔刷更新频繁，9 月后的版本适配了湿边新参数。10 月之前的包在 Procreate 5.4 上功能完整但参数少两项。</li>
+          <li><strong>看纸纹配套是否齐全。</strong>单卖笔刷的包需要自己找纸纹，配套包省一步，但纸纹分辨率要确认到 300dpi 以上。</li>
+          <li><strong>最后看体积。</strong>600dpi 纸纹包动辄 200MB 以上，平板空间紧张时优先选 300dpi 版本，笔刷包本身通常不超过 50MB。</li>
+        </ol>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section-block" id="faq">
+        <div class="section-header">
+          <h2>关于插画素材的常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>湿边笔刷在 Procreate 5.4 上边缘积色不明显怎么办？</summary>
+            <div class="faq-answer">先确认笔刷设置里“边缘积色”滑块是否拉到 50% 以上，5.4 版本默认值偏低。再检查纸纹层的不透明度，低于 15% 时积色会被压平。如果两项都正常，换冷压粗纹纸纹再试，细纹纸上积色本来就弱。</div>
+          </details>
+          <details>
+            <summary>300dpi 和 600dpi 纸纹在平板上画真的看不出差别吗？</summary>
+            <div class="faq-answer">在 10 英寸平板上 100% 缩放时差别很小，放大到 200% 后 300dpi 的颗粒边缘会变虚。画布尺寸超过 A4、或者需要印刷输出，600dpi 的颗粒完整性更好。社交媒体发图用 300dpi 完全够。</div>
+          </details>
+          <details>
+            <summary>厚涂笔刷的纹理在叠色时错位是什么原因？</summary>
+            <div class="faq-answer">笔刷的纹理抖动种子没有固定。2026 年 10 月之前的 .abr 文件多数用随机种子，每画一笔纹理走向都变。更新到新版笔刷包，或者手动在笔刷设置里锁定纹理种子，叠色时纹理就能对齐。</div>
+          </details>
+          <details>
+            <summary>线稿模板导入 CSP 后对称尺对不上中线怎么调？</summary>
+            <div class="faq-answer">模板的参考线是按 2000×2000px 画布画的。导入时画布尺寸不一致，参考线会偏移。新建画布设成 2000px 见方，或者导入后手动把对称尺轴心拖到模板中线位置，偏差通常在 3—5px 以内。</div>
+          </details>
+          <details>
+            <summary>黄昏色温卡的饱和度调低后，厚涂画面会不会发灰？</summary>
+            <div class="faq-answer">饱和度降的是高光组，主色和辅色没动。高光饱和度从 42% 降到 36% 是为了让亮部不跳，厚涂的灰感主要来自辅色明度。辅色明度保持在 55% 以上，画面不会发灰。</div>
+          </details>
+          <details>
+            <summary>Q 版全身动态模板的头身比可以改吗？</summary>
+            <div class="faq-answer">模板按 2.5 头身画的，拉伸到 3 头身需要重新画关节位置。改头身比时先定头高，再按比例推肩线和胯线，手脚长度跟着缩放。模板参考线只给到关节定位，比例调整后关节位置要手动对齐。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section-block" id="comments">
+        <div class="section-header">
+          <h2>用过的人怎么说</h2>
+        </div>
+        <div class="comment-grid">
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">林</span><span class="comment-name">林间有雾</span></div>
+            <p class="comment-text">湿边笔刷 Vol.3 在粗纹纸上真的能画出积色边，比之前自己调的好用。细纹纸上就差很多，边缘糊。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">阿</span><span class="comment-name">阿橘不画画</span></div>
+            <p class="comment-text">冷压粗纹扫描包下了 600dpi 版本，文件 280MB，平板差点存不下。颗粒没得说，值。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">三</span><span class="comment-name">三文鱼罐头</span></div>
+            <p class="comment-text">Q 版全身动态第 7 式的脚踝之前确实偏了，更新后好了。不过 20 个姿势里站姿偏多，蹲姿就两个。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">m</span><span class="comment-name">momo画手</span></div>
+            <p class="comment-text">厚涂圆头笔在 PS 2026 上纹理对齐了，叠色终于不错位了。之前旧版每笔纹理都变，叠三层就乱。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">夜</span><span class="comment-name">夜航船</span></div>
+            <p class="comment-text">黄昏色温卡高光降饱和这个改动好，之前那版亮部太跳，厚涂完看着假。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">白</span><span class="comment-name">白桃乌龙</span></div>
+            <p class="comment-text">头像三视图模板的四分之三侧下颌线原来没标，我每次都得自己估。11 月 2 号补上了，好。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">q</span><span class="comment-name">qiuqiu</span></div>
+            <p class="comment-text">刮刀笔刃口 2px 那支用来画高光正好，5px 的铺大色块也顺手。就是笔刷包说明写得简略了点。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">不</span><span class="comment-name">不吃香菜</span></div>
+            <p class="comment-text">线稿模板库 217 套里半身动态终于过百了，约稿出草图快了不少。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">拾</span><span class="comment-name">拾叁</span></div>
+            <p class="comment-text">纸纹层降到 20% 不透明度画头像这个建议实测有效，之前颗粒太抢五官了。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">大</span><span class="comment-name">大碗宽面</span></div>
+            <p class="comment-text">说实话水彩笔刷更新太快，9 月刚下完 10 月又出新参数，有点跟不上。不过新参数确实好用。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">冬</span><span class="comment-name">冬眠中</span></div>
+            <p class="comment-text">对称尺轴心偏移 3px 那个问题我也碰到了，按 FAQ 里说拖回去就好了，还以为模板画歪了。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">z</span><span class="comment-name">zoe_画</span></div>
+            <p class="comment-text">厚涂噪点纹理层能不能单独出一个包，现在只有笔刷组合里带了一小张。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">一</span><span class="comment-name">一只咸鱼</span></div>
+            <p class="comment-text">今天试了 600dpi 粗纹和 300dpi 对比，放大到 200% 确实有差。但平时发图谁放大看啊。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">陈</span><span class="comment-name">陈年旧稿</span></div>
+            <p class="comment-text">Q 版模板头身比 2.5 改 3 是真的麻烦，关节全要重推。模板要是能给个可调头身比的辅助线就好了。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">k</span><span class="comment-name">kiki在画</span></div>
+            <p class="comment-text">配色卡主色辅色高光三组分得清楚，铺色顺序建议对新手很友好。比那种一张图 20 个色块的强。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section-block" id="news">
+        <div class="section-header">
+          <h2>近期行业动态</h2>
+        </div>
+        <div class="news-list">
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/scnews01/600/400" width="600" height="400" loading="lazy" alt="Procreate 5.4 更新说明会的界面截图">
+            <div class="news-body">
+              <h3 class="news-title">Procreate 5.4 湿边参数更新满一个月，笔刷作者集中适配</h3>
+              <div class="news-date">2026-11-06</div>
+              <p class="news-summary">9 月 18 日推送的“边缘积色”参数到 10 月 18 日满月，笔刷商店里标注 5.4 适配的笔刷包从 37 个增至 112 个。其中 68 个包更新了纸纹推荐说明。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/scnews02/600/400" width="600" height="400" loading="lazy" alt="Clip Studio Paint 3D 人偶姿势库界面">
+            <div class="news-body">
+              <h3 class="news-title">CSP 10 月姿势库扩至 320 组，半身动态新增 46 组</h3>
+              <div class="news-date">2026-11-03</div>
+              <p class="news-summary">10 月 22 日更新的 3D 人偶姿势库新增 46 组半身动态，其中 18 组标注了重心偏移参考。线稿模板作者开始按新姿势库重画参考线。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/scnews03/600/400" width="600" height="400" loading="lazy" alt="水彩纸纹扫描设备与样张对比">
+            <div class="news-body">
+              <h3 class="news-title">纸纹扫描包分辨率标准分化，600dpi 需求集中在印刷向创作者</h3>
+              <div class="news-date">2026-10-28</div>
+              <p class="news-summary">10 月 25 日至 28 日，三个纸纹素材账号的下载数据显示，600dpi 版本下载占比 34%，但收藏率是 300dpi 版本的 1.7 倍。买而不用的比例偏高。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/scnews04/600/400" width="600" height="400" loading="lazy" alt="厚涂笔刷纹理种子锁定功能演示">
+            <div class="news-body">
+              <h3 class="news-title">Photoshop 2026 笔刷格式支持噪点嵌入，厚涂笔刷重制潮</h3>
+              <div class="news-date">2026-10-20</div>
+              <p class="news-summary">.abr 格式更新后支持嵌入 8 位灰度噪点图，10 月已有 9 组厚涂笔刷包重新导出。旧版笔刷在新格式下纹理种子默认为随机，需手动锁定。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/scnews05/600/400" width="600" height="400" loading="lazy" alt="同人约稿平台线稿模板使用统计">
+            <div class="news-body">
+              <h3 class="news-title">同人约稿平台 Q 版模板使用率升至 61%</h3>
+              <div class="news-date">2026-10-15</div>
+              <p class="news-summary">某约稿平台 10 月上半月统计，Q 版全身委托中使用模板出草图的占 61%，比 7 月上升 9 个百分点。2.5 头身仍是主流，3 头身订单集中在游戏同人区。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/scnews06/600/400" width="600" height="400" loading="lazy" alt="黄昏场景色温参考照片对比">
+            <div class="news-body">
+              <h3 class="news-title">秋季黄昏色温参考需求上扬，暖调配色卡下载量增四成</h3>
+              <div class="news-date">2026-10-12</div>
+              <p class="news-summary">10 月第一周黄昏场景色温卡下载量比 9 月同期增长 42%。高光饱和度调低后的版本占下载量的 76%，厚涂方向使用者占七成。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section-block" id="recommend">
+        <div class="section-header">
+          <h2>同类方向索引</h2>
+        </div>
+        <div class="tag-cloud">
+          <a href="/#featured">水彩花卉笔刷</a>
+          <a href="/#featured">粗纹纸叠色层</a>
+          <a href="/#featured">厚涂噪点笔尖</a>
+          <a href="/#featured">二次元头像定位线</a>
+          <a href="/#featured">黄昏场景铺色顺序</a>
+          <a href="/#featured">Q版约稿草图模板</a>
+          <a href="/#featured">湿边积色参数表</a>
+          <a href="/#featured">刮刀刃口宽度对比</a>
+        </div>
+      </section>
+
+      <!-- 11. 热门榜单 -->
+      <section class="section-block" id="rank">
+        <div class="section-header">
+          <h2>本月下载排行</h2>
+        </div>
+        <ul class="rank-list">
+          <li><span class="rank-num">1</span><span class="rank-name">冷压粗纹纸扫描包</span><span class="rank-score">5,160 次</span></li>
+          <li><span class="rank-num">2</span><span class="rank-name">厚涂圆头笔刷组合</span><span class="rank-score">4,230 次</span></li>
+          <li><span class="rank-num">3</span><span class="rank-name">水彩湿边笔刷 Vol.3</span><span class="rank-score">3,820 次</span></li>
+          <li><span class="rank-num">4</span><span class="rank-name">头像三视图线稿模板</span><span class="rank-score">2,940 次</span></li>
+          <li><span class="rank-num">5</span><span class="rank-name">黄昏场景色温卡</span><span class="rank-score">1,870 次</span></li>
+          <li><span class="rank-num">6</span><span class="rank-name">Q 版全身动态 20 式</span><span class="rank-score">1,650 次</span></li>
+        </ul>
+      </section>
+
+      <!-- 12. 投稿上传 -->
+      <section class="section-block" id="submit">
+        <div class="section-header">
+          <h2>投稿与上传</h2>
+        </div>
+        <div style="font-size:14px;color:var(--text-secondary);line-height:1.85;">
+          <p>如果你自己做过笔刷、纸纹扫描或线稿模板，可以整理成包投过来。格式不限，Procreate 的 .brushset、Photoshop 的 .abr、CSP 的 .sut 都收。线稿模板附一张预览图即可，不需要源文件。</p>
+          <p>投稿时请注明适用软件版本和纸纹分辨率。审核周期一般三到五个工作日，通过后会出现在对应分类里，署名用你的画手 ID。</p>
+        </div>
+        <div style="margin-top:16px;">
+          <a href="/#submit" class="btn-primary" style="font-size:13px;padding:8px 20px;">上传素材包</a>
+          <a href="/#submit" class="btn-outline" style="font-size:13px;padding:8px 20px;margin-left:8px;">查看投稿须知</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右栏辅助 -->
+    <aside class="sidebar-right" aria-label="辅助信息">
+      <div class="side-card">
+        <h3>站内速查</h3>
+        <ul class="side-links">
+          <li><a href="/#featured">最新上架笔刷</a></li>
+          <li><a href="/#updates">本周更新记录</a></li>
+          <li><a href="/#rank">下载排行</a></li>
+          <li><a href="/#categories">全部分类</a></li>
+          <li><a href="/#submit">投稿入口</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>资源数据</h3>
+        <div class="side-stats">
+          <div class="side-stat-row"><span>笔刷预设</span><strong>14</strong></div>
+          <div class="side-stat-row"><span>纸张纹理</span><strong>9</strong></div>
+          <div class="side-stat-row"><span>线稿模板</span><strong>17</strong></div>
+          <div class="side-stat-row"><span>配色方案</span><strong>8</strong></div>
+          <div class="side-stat-row"><span>本月更新</span><strong>10</strong></div>
+        </div>
+      </div>
+      <div class="side-card">
+        <h3>热门标签</h3>
+        <div class="tag-cloud" style="gap:6px;">
+          <a href="/#featured" style="font-size:12px;padding:3px 10px;">湿边积色</a>
+          <a href="/#featured" style="font-size:12px;padding:3px 10px;">冷压粗纹</a>
+          <a href="/#featured" style="font-size:12px;padding:3px 10px;">刮刀笔</a>
+          <a href="/#featured" style="font-size:12px;padding:3px 10px;">对称尺</a>
+          <a href="/#featured" style="font-size:12px;padding:3px 10px;">噪点纹理</a>
+          <a href="/#featured" style="font-size:12px;padding:3px 10px;">Q版动态</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">小小绘资源合计</div>
+      <p class="footer-desc">这里汇集 2026 年 9 月至 11 月间更新的水彩笔刷、冷压纸纹、二次元线稿模板与场景配色方案，条目以素材包和预设文件为主，更新频率为每周 2—3 次。</p>
+    </div>
+    <div class="footer-col">
+      <h4>资源分类</h4>
+      <ul>
+        <li><a href="/#featured">水彩湿边笔刷</a></li>
+        <li><a href="/#featured">冷压纸纹扫描</a></li>
+        <li><a href="/#featured">厚涂噪点笔刷</a></li>
+        <li><a href="/#featured">二次元线稿模板</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>互动</h4>
+      <ul>
+        <li><a href="/#submit">投稿须知</a></li>
+        <li><a href="/#submit">上传素材</a></li>
+        <li><a href="/#comments">用户评论</a></li>
+        <li><a href="/#faq">常见问答</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>更新与资讯</h4>
+      <ul>
+        <li><a href="/#updates">本周更新</a></li>
+        <li><a href="/#news">行业动态</a></li>
+        <li><a href="/#rank">下载排行</a></li>
+        <li><a href="/#recommend">相关索引</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>页面内容为示例资源条目，更新数据截至 2026 年 11 月 8 日。</span>
+    <span>小小绘资源合计 · 内容聚合示例</span>
+  </div>
+</footer>
+
+<!-- 回到顶部 -->
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+<!-- 结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "小小绘资源合计",
+  "description": "插画素材与创作资源聚合页面，涵盖水彩笔刷、纸纹扫描、线稿模板与配色方案。",
+  "url": ""
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "湿边笔刷在 Procreate 5.4 上边缘积色不明显怎么办？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "先确认笔刷设置里“边缘积色”滑块是否拉到 50% 以上，5.4 版本默认值偏低。再检查纸纹层的不透明度，低于 15% 时积色会被压平。如果两项都正常，换冷压粗纹纸纹再试，细纹纸上积色本来就弱。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "300dpi 和 600dpi 纸纹在平板上画真的看不出差别吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "在 10 英寸平板上 100% 缩放时差别很小，放大到 200% 后 300dpi 的颗粒边缘会变虚。画布尺寸超过 A4、或者需要印刷输出，600dpi 的颗粒完整性更好。社交媒体发图用 300dpi 完全够。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "厚涂笔刷的纹理在叠色时错位是什么原因？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "笔刷的纹理抖动种子没有固定。2026 年 10 月之前的 .abr 文件多数用随机种子，每画一笔纹理走向都变。更新到新版笔刷包，或者手动在笔刷设置里锁定纹理种子，叠色时纹理就能对齐。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "线稿模板导入 CSP 后对称尺对不上中线怎么调？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "模板的参考线是按 2000×2000px 画布画的。导入时画布尺寸不一致，参考线会偏移。新建画布设成 2000px 见方，或者导入后手动把对称尺轴心拖到模板中线位置，偏差通常在 3—5px 以内。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "黄昏色温卡的饱和度调低后，厚涂画面会不会发灰？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "饱和度降的是高光组，主色和辅色没动。高光饱和度从 42% 降到 36% 是为了让亮部不跳，厚涂的灰感主要来自辅色明度。辅色明度保持在 55% 以上，画面不会发灰。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Q 版全身动态模板的头身比可以改吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "模板按 2.5 头身画的，拉伸到 3 头身需要重新画关节位置。改头身比时先定头高，再按比例推肩线和胯线，手脚长度跟着缩放。模板参考线只给到关节定位，比例调整后关节位置要手动对齐。"
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  // 移动端菜单
+  var menuToggle = document.getElementById('menuToggle');
+  var mobilePanel = document.getElementById('mobilePanel');
+  var mobileOverlay = document.getElementById('mobileOverlay');
+  var mobileClose = document.getElementById('mobileClose');
+
+  function openMenu(){
+    mobilePanel.style.display = 'block';
+    mobileOverlay.style.display = 'block';
+    menuToggle.setAttribute('aria-expanded','true');
+    mobileClose.focus();
+  }
+  function closeMenu(){
+    mobilePanel.style.display = 'none';
+    mobileOverlay.style.display = 'none';
+    menuToggle.setAttribute('aria-expanded','false');
+  }
+  if(menuToggle){
+    menuToggle.addEventListener('click', function(){
+      if(mobilePanel.style.display === 'block'){ closeMenu(); }
+      else { openMenu(); }
+    });
+  }
+  if(mobileClose){ mobileClose.addEventListener('click', closeMenu); }
+  if(mobileOverlay){ mobileOverlay.addEventListener('click', closeMenu); }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeMenu(); }
+  });
+  if(mobilePanel){
+    mobilePanel.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeMenu);
+    });
+  }
+
+  // 搜索筛选（精选资源区域）
+  var searchInput = document.getElementById('searchInput');
+  var featuredGrid = document.getElementById('featuredGrid');
+  var noResult = document.getElementById('noResult');
+  if(searchInput && featuredGrid){
+    searchInput.addEventListener('input', function(){
+      var q = this.value.trim().toLowerCase();
+      var cards = featuredGrid.querySelectorAll('.card-item');
+      var visible = 0;
+      cards.forEach(function(card){
+        var text = card.textContent.toLowerCase();
+        if(q === '' || text.indexOf(q) !== -1){
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      noResult.style.display = (visible === 0 && q !== '') ? 'block' : 'none';
+    });
+  }
+
+  // 分类筛选
+  var catChips = document.querySelectorAll('.cat-chip');
+  catChips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      catChips.forEach(function(c){ c.classList.remove('active'); });
+      this.classList.add('active');
+      var cat = this.getAttribute('data-cat');
+      if(!featuredGrid) return;
+      var cards = featuredGrid.querySelectorAll('.card-item');
+      var visible = 0;
+      cards.forEach(function(card){
+        if(cat === 'all'){
+          card.style.display = '';
+          visible++;
+        } else {
+          var typeEl = card.querySelector('.card-type');
+          var tags = card.querySelector('.card-tags');
+          var text = (typeEl ? typeEl.textContent : '') + ' ' + (tags ? tags.textContent : '');
+          if(text.indexOf(cat) !== -1){
+            card.style.display = '';
+            visible++;
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+      noResult.style.display = (visible === 0) ? 'block' : 'none';
+    });
+  });
+
+  // 回到顶部
+  var backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > window.innerHeight){
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+  if(backToTop){
+    backToTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  // 侧栏导航高亮（简单版）
+  var sections = document.querySelectorAll('.section-block[id]');
+  var navLinks = document.querySelectorAll('.channel-list a');
+  function highlightNav(){
+    var scrollPos = window.scrollY + 140;
+    var currentId = '';
+    sections.forEach(function(sec){
+      if(sec.offsetTop <= scrollPos){
+        currentId = sec.getAttribute('id');
+      }
+    });
+    navLinks.forEach(function(link){
+      link.classList.remove('active');
+      if(link.getAttribute('href') === '/#' + currentId){
+        link.classList.add('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', highlightNav);
+  highlightNav();
+})();
+</script>
+
+</body>
+          </html>
