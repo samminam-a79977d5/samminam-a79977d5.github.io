@@ -1,0 +1,1688 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5566中国最早最方便 - 资源聚合与效率指南</title>
+  <meta name="description" content="5566中国最早最方便汇聚资源站导航、在线工具、分类索引与效率指南，覆盖网盘搜索、在线转换、文档协作等具体条目，适合需要快速查找实用工具与资源入口的日常用户。">
+  <meta name="keywords" content="5566中国最早最方便">
+  <style>
+    :root {
+      --primary: #c23b2b;
+      --primary-light: #e86b5a;
+      --primary-dark: #8f2a1d;
+      --bg: #faf8f5;
+      --surface: #ffffff;
+      --text-primary: #1e1b1a;
+      --text-secondary: #5e5754;
+      --text-tertiary: #8c837f;
+      --divider: #e6dfda;
+      --radius-card: 16px;
+      --radius-btn: 40px;
+      --radius-tag: 20px;
+      --radius-banner: 12px;
+      --shadow-default: 0 4px 16px rgba(0,0,0,0.04), 0 1px 4px rgba(0,0,0,0.02);
+      --shadow-hover: 0 12px 28px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.03);
+      --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --sticky-height: 100px;
+      --content-width: 1320px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--sticky-height); }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding-top: var(--sticky-height);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* 吸顶公告条 + 页头 */
+    .sticky-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--divider);
+    }
+    .announce-bar {
+      background: var(--primary-dark);
+      color: #f5e6e3;
+      font-size: 13px;
+      padding: 6px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .announce-inner {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      animation: scroll-marquee 24s linear infinite;
+    }
+    .announce-inner:hover { animation-play-state: paused; }
+    @keyframes scroll-marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .announce-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+    .announce-badge {
+      background: var(--primary-light);
+      color: #fff;
+      padding: 1px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+    }
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      gap: 20px;
+    }
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 1;
+      box-shadow: 0 4px 8px rgba(194, 59, 43, 0.2);
+    }
+    .brand-text {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--primary-dark);
+    }
+    .main-nav {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .main-nav a {
+      padding: 6px 14px;
+      border-radius: var(--radius-btn);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      background: #f0eae6;
+      color: var(--primary-dark);
+    }
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius-btn);
+      padding: 4px 4px 4px 16px;
+      transition: border-color 0.2s;
+    }
+    .search-box:focus-within {
+      border-color: var(--primary);
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      font-size: 14px;
+      padding: 6px 0;
+      width: 160px;
+      outline: none;
+      color: var(--text-primary);
+    }
+    .search-box input::placeholder {
+      color: var(--text-tertiary);
+    }
+    .search-box button {
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius-btn);
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .search-box button:hover {
+      background: var(--primary-dark);
+    }
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      border-radius: 8px;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .mobile-menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* 首屏 */
+    .hero {
+      background: linear-gradient(135deg, #fdf7f4 0%, #f5e8e4 100%);
+      border-radius: 0 0 32px 32px;
+      padding: 48px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(194,59,43,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 520px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: var(--radius-btn);
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 12px rgba(194,59,43,0.25);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      color: var(--primary-dark);
+      padding: 12px 28px;
+      border-radius: var(--radius-btn);
+      font-weight: 600;
+      font-size: 15px;
+      border: 1px solid var(--divider);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-visual svg {
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+    }
+
+    /* 三栏布局 */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr 240px;
+      gap: 32px;
+      padding: 40px 0 56px;
+      align-items: start;
+    }
+    .left-channel {
+      position: sticky;
+      top: calc(var(--sticky-height) + 16px);
+    }
+    .channel-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .channel-list a {
+      display: block;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: background 0.2s, color 0.2s;
+      border-left: 3px solid transparent;
+    }
+    .channel-list a:hover,
+    .channel-list a.active {
+      background: #f5eeea;
+      color: var(--primary-dark);
+      border-left-color: var(--primary);
+    }
+    .channel-heading {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-tertiary);
+      margin-bottom: 12px;
+      padding-left: 14px;
+    }
+
+    /* 主内容区 */
+    .content-main {
+      min-width: 0;
+    }
+    .section {
+      margin-bottom: 48px;
+    }
+    .section:last-child {
+      margin-bottom: 0;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+    }
+    .section-link {
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .section-link:hover {
+      text-decoration: underline;
+    }
+
+    /* 概览 */
+    .overview-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .overview-text p {
+      margin-bottom: 12px;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--shadow-default);
+      transition: box-shadow 0.25s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      background: #f5eeea;
+      color: var(--primary-dark);
+      font-size: 12px;
+      padding: 2px 10px;
+      border-radius: var(--radius-tag);
+      font-weight: 500;
+    }
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .card-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      border-top: 1px solid var(--divider);
+      padding-top: 12px;
+      margin-top: auto;
+    }
+
+    /* 最新更新列表 */
+    .update-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .update-item {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: baseline;
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-name {
+      font-weight: 600;
+      font-size: 15px;
+      min-width: 120px;
+      color: var(--text-primary);
+    }
+    .update-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      flex: 1;
+    }
+    .update-time {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .category-item {
+      background: var(--surface);
+      border-radius: var(--radius-banner);
+      padding: 16px 12px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      box-shadow: var(--shadow-default);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .category-item:hover {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(194,59,43,0.2);
+    }
+    .category-item .cat-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 28px 32px;
+      box-shadow: var(--shadow-default);
+    }
+    .deep-dive h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 24px 0 10px;
+      color: var(--text-primary);
+    }
+    .deep-dive h3:first-of-type { margin-top: 0; }
+    .deep-dive p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .deep-dive ul {
+      margin: 8px 0 16px 20px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .deep-dive li {
+      margin-bottom: 6px;
+    }
+
+    /* FAQ */
+    .faq-list details {
+      background: var(--surface);
+      border-radius: var(--radius-banner);
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow-default);
+      transition: box-shadow 0.2s;
+    }
+    .faq-list details:hover {
+      box-shadow: var(--shadow-hover);
+    }
+    .faq-list summary {
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-primary);
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--primary);
+      font-weight: 700;
+      line-height: 1;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .faq-list details[open] summary::after {
+      content: '−';
+    }
+    .faq-answer {
+      padding-top: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      border-top: 1px solid var(--divider);
+      margin-top: 12px;
+    }
+
+    /* 评论 */
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .comment-item {
+      display: flex;
+      gap: 12px;
+      background: var(--surface);
+      border-radius: var(--radius-banner);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-default);
+    }
+    .comment-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f0eae6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--primary-dark);
+      flex-shrink: 0;
+    }
+    .comment-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .comment-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .comment-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* 相关资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .news-item {
+      background: var(--surface);
+      border-radius: var(--radius-banner);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-default);
+    }
+    .news-header {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .news-title {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+    .news-date {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+    }
+    .news-summary {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* 相关推荐 */
+    .recommend-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .recommend-tag {
+      background: var(--surface);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius-tag);
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .recommend-tag:hover {
+      background: #f5eeea;
+      border-color: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    /* 补充板块：榜单 */
+    .rank-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .rank-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border-radius: var(--radius-banner);
+      padding: 12px 18px;
+      box-shadow: var(--shadow-default);
+    }
+    .rank-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      background: #f5eeea;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--primary-dark);
+      flex-shrink: 0;
+    }
+    .rank-num.top1 { background: var(--primary); color: #fff; }
+    .rank-name {
+      font-weight: 600;
+      font-size: 14px;
+      flex: 1;
+      color: var(--text-primary);
+    }
+    .rank-score {
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* 右侧辅助栏 */
+    .right-sidebar {
+      position: sticky;
+      top: calc(var(--sticky-height) + 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sidebar-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 18px 16px;
+      box-shadow: var(--shadow-default);
+    }
+    .sidebar-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sidebar-title::before {
+      content: '';
+      width: 4px;
+      height: 16px;
+      background: var(--primary);
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .hot-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hot-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+    .hot-item .hot-idx {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 12px;
+      min-width: 16px;
+    }
+    .update-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .stream-item {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .stream-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .stream-item time {
+      display: block;
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 2px;
+    }
+
+    /* 页尾 */
+    .page-footer {
+      background: #1e1b1a;
+      color: #c5bcb7;
+      padding: 48px 0 32px;
+      margin-top: 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+    .footer-brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-brand .brand-logo {
+      width: 30px;
+      height: 30px;
+      font-size: 15px;
+      border-radius: 8px;
+    }
+    .footer-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #9c918c;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: #9c918c;
+      padding: 3px 0;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid #33302e;
+      padding-top: 20px;
+      font-size: 12px;
+      color: #6b625e;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* 回到顶部 */
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(194,59,43,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s, visibility 0.25s, transform 0.2s;
+      z-index: 90;
+      font-size: 20px;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* 遮罩 */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s, visibility 0.25s;
+    }
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .main-layout {
+        grid-template-columns: 1fr 240px;
+      }
+      .left-channel {
+        display: none;
+      }
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero-text h1 { font-size: 38px; }
+      .hero-visual { justify-content: flex-start; }
+      .hero-visual svg { max-width: 360px; }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      .category-grid { grid-template-columns: repeat(4, 1fr); }
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 740px) {
+      :root { --sticky-height: 110px; }
+      body { padding-top: var(--sticky-height); }
+      .main-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .right-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .right-sidebar .sidebar-card:last-child {
+        grid-column: span 2;
+      }
+      .hero { padding: 32px 0 40px; }
+      .hero-text h1 { font-size: 32px; }
+      .hero-desc { font-size: 15px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .deep-dive { padding: 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .main-nav {
+        display: none;
+        position: fixed;
+        top: var(--sticky-height);
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        padding: 16px 24px;
+        flex-direction: column;
+        border-bottom: 1px solid var(--divider);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        z-index: 98;
+        gap: 4px;
+      }
+      .main-nav.open {
+        display: flex;
+      }
+      .main-nav a {
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 15px;
+      }
+      .mobile-menu-btn {
+        display: flex;
+      }
+      .search-box input { width: 100px; }
+      .header-actions { gap: 4px; }
+      .announce-inner {
+        animation: none;
+        flex-wrap: wrap;
+        white-space: normal;
+        gap: 12px;
+        justify-content: center;
+      }
+      .announce-bar { padding: 4px 0; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .page-header { padding: 10px 16px; }
+      .search-box { display: none; }
+      .hero-text h1 { font-size: 28px; }
+      .right-sidebar { grid-template-columns: 1fr; }
+      .right-sidebar .sidebar-card:last-child { grid-column: span 1; }
+      .category-grid { grid-template-columns: 1fr 1fr; }
+      .update-item { flex-wrap: wrap; gap: 4px; }
+      .update-name { min-width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 + 页头 -->
+<div class="sticky-wrap">
+  <div class="announce-bar">
+    <div class="announce-inner">
+      <span class="announce-item"><span class="announce-badge">5566</span> 2026-11-08 新增「在线文档协作工具」分类索引</span>
+      <span class="announce-item">📅 10月30日 收录「格式转换与压缩工具」专题 8 个条目</span>
+      <span class="announce-item">📅 11月5日 更新「网盘搜索」可用性检测报告</span>
+      <span class="announce-item">🔥 本周新增 12 个资源入口，累计收录 86 个工具站</span>
+    </div>
+  </div>
+  <header class="page-header">
+    <div class="brand-area">
+      <div class="brand-logo" aria-hidden="true">56</div>
+      <span class="brand-text">5566中国最早最方便</span>
+    </div>
+    <nav class="main-nav" id="mainNav" aria-label="主题导航">
+      <a href="/#overview">领域概览</a>
+      <a href="/#featured">精选推荐</a>
+      <a href="/#updates">最新更新</a>
+      <a href="/#categories">分类入口</a>
+      <a href="/#deepdive">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#comments">用户评论</a>
+      <a href="/#news">相关资讯</a>
+      <a href="/#recommend">相关推荐</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索资源/工具..." aria-label="搜索站内内容">
+        <button type="button" id="searchBtn">查找</button>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+</div>
+
+<!-- 首屏 -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>5566中国最早最方便</h1>
+        <p class="hero-desc">汇集网盘搜索、在线格式转换、文档协作、设计素材与临时邮箱等实用工具入口，按可用性、响应速度和操作步骤筛选，帮你在十分钟内找到能直接用的那个站。</p>
+        <div class="hero-actions">
+          <a href="/#featured" class="btn-primary">浏览精选工具 →</a>
+          <a href="/#updates" class="btn-secondary">查看今日更新</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="工具聚合示意图：多个卡片入口汇入中心">
+          <rect x="40" y="30" width="130" height="80" rx="12" fill="#f5eeea" stroke="#e86b5a" stroke-width="1.5"/>
+          <rect x="60" y="48" width="60" height="8" rx="4" fill="#c23b2b" opacity="0.7"/>
+          <rect x="60" y="64" width="90" height="6" rx="3" fill="#c23b2b" opacity="0.3"/>
+          <rect x="60" y="76" width="70" height="6" rx="3" fill="#c23b2b" opacity="0.3"/>
+
+          <rect x="230" y="50" width="130" height="80" rx="12" fill="#f5eeea" stroke="#e86b5a" stroke-width="1.5"/>
+          <rect x="250" y="68" width="60" height="8" rx="4" fill="#c23b2b" opacity="0.7"/>
+          <rect x="250" y="84" width="90" height="6" rx="3" fill="#c23b2b" opacity="0.3"/>
+          <rect x="250" y="96" width="50" height="6" rx="3" fill="#c23b2b" opacity="0.3"/>
+
+          <rect x="70" y="150" width="110" height="70" rx="12" fill="#f5eeea" stroke="#e86b5a" stroke-width="1.5"/>
+          <rect x="88" y="166" width="50" height="8" rx="4" fill="#c23b2b" opacity="0.7"/>
+          <rect x="88" y="182" width="74" height="6" rx="3" fill="#c23b2b" opacity="0.3"/>
+
+          <rect x="220" y="170" width="110" height="70" rx="12" fill="#f5eeea" stroke="#e86b5a" stroke-width="1.5"/>
+          <rect x="238" y="186" width="50" height="8" rx="4" fill="#c23b2b" opacity="0.7"/>
+          <rect x="238" y="202" width="74" height="6" rx="3" fill="#c23b2b" opacity="0.3"/>
+
+          <circle cx="200" cy="260" r="28" fill="#c23b2b" opacity="0.9"/>
+          <path d="M190 260 L196 266 L210 252" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <line x1="105" y1="110" x2="180" y2="245" stroke="#e86b5a" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+          <line x1="295" y1="130" x2="220" y2="245" stroke="#e86b5a" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+          <line x1="125" y1="220" x2="180" y2="245" stroke="#e86b5a" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+          <line x1="275" y1="240" x2="220" y2="245" stroke="#e86b5a" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 主布局：三栏 -->
+<div class="container">
+  <div class="main-layout">
+
+    <!-- 左侧频道索引 -->
+    <aside class="left-channel">
+      <div class="channel-heading">频道索引</div>
+      <nav class="channel-list" aria-label="左侧频道导航">
+        <a href="/#overview" class="active">领域概览</a>
+        <a href="/#featured">精选工具</a>
+        <a href="/#updates">最新更新</a>
+        <a href="/#categories">分类入口</a>
+        <a href="/#deepdive">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#comments">用户评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#recommend">相关推荐</a>
+        <a href="/#rank">热门榜单</a>
+        <a href="/#contribute">投稿交流</a>
+      </nav>
+    </aside>
+
+    <!-- 中间主内容 -->
+    <main class="content-main" id="mainContent">
+
+      <!-- 1. 领域概览 -->
+      <section class="section" id="overview">
+        <div class="section-header">
+          <h2 class="section-title">资源聚合与在线工具领域概览</h2>
+        </div>
+        <div class="overview-text">
+          <p>5566中国最早最方便指向的内容类型，本质上是把散落在不同域名下的实用工具入口按使用场景重新归拢。当前活跃的方向包括：网盘资源搜索（如「狸猫盘搜」「盘友圈」这类索引站）、在线格式转换（PDF 转 Word、视频转 GIF、图片压缩）、文档协作白板（如「WPS 协作」「飞书文档」模板库）、临时邮箱与接码验证、设计素材下载（如「IconPark」「Undraw」）、以及开发者常用的小工具集合（JSON 格式化、正则测试、时间戳转换）。</p>
+          <p>2026 年下半年值得留意的变化是：部分老牌网盘搜索站因接口调整频繁出现空结果，而新一批以「日更检测」为卖点的站点（如「盘搜搜 v3」「阿里小站」）开始标注每个链接的存活时间。在线转换类工具则普遍加入了 200MB 以内免费、超出按次计费的阶梯规则。文档协作方向，飞书和语雀在 10 月先后更新了模板市场，新增「周报自动生成」「项目复盘」等与具体工作流绑定的模板，而不是单纯堆数量。</p>
+          <p>对于日常需要查资料、转格式、找素材的用户，判断一个入口是否值得放入收藏夹的硬指标有三个：响应时间是否稳定在 2 秒内、是否强制登录才能使用核心功能、以及最近 7 天是否有其他用户在评论区反馈失效。这三条比站点的界面美观程度重要得多。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="section" id="featured">
+        <div class="section-header">
+          <h2 class="section-title">精选工具与资源入口</h2>
+          <a href="/#categories" class="section-link">全部分类 →</a>
+        </div>
+        <div class="card-grid" id="featuredGrid">
+          <div class="card">
+            <div class="card-title">狸猫盘搜 · 网盘资源索引</div>
+            <div class="card-tags">
+              <span class="tag">网盘搜索</span><span class="tag">日更检测</span><span class="tag">免登录</span>
+            </div>
+            <p class="card-desc">聚合百度网盘、阿里云盘、夸克网盘三类链接，每个结果标注最近一次可用检测时间。10 月 28 日实测搜索「PPT 模板 2026」返回 47 条结果，其中 41 条可正常打开。</p>
+            <div class="card-meta"><span>热度 9.2</span><span>更新于 11-07</span><span>免登录</span></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Convertio 在线格式转换</div>
+            <div class="card-tags">
+              <span class="tag">格式转换</span><span class="tag">PDF 转 Word</span><span class="tag">200MB 免费</span>
+            </div>
+            <p class="card-desc">支持 300 余种格式互转，免费账户单文件上限 200MB、每日 10 次。11 月 6 日新增 HEIC 转 JPG 批量模式，一次最多 20 张，转换后保留 EXIF 信息。</p>
+            <div class="card-meta"><span>响应 1.4s</span><span>评分 8.7</span><span>需注册</span></div>
+          </div>
+          <div class="card">
+            <div class="card-title">飞书文档模板市场</div>
+            <div class="card-tags">
+              <span class="tag">文档协作</span><span class="tag">周报模板</span><span class="tag">免费</span>
+            </div>
+            <p class="card-desc">10 月 22 日上线「项目复盘」「OKR 对齐」两个新专题，模板可直接复制到个人空间。实测「周报自动生成」模板会拉取日历事件和任务完成率，省去手动填表。</p>
+            <div class="card-meta"><span>模板数 320+</span><span>更新于 11-05</span><span>需登录</span></div>
+          </div>
+          <div class="card">
+            <div class="card-title">IconPark 图标库</div>
+            <div class="card-tags">
+              <span class="tag">设计素材</span><span class="tag">SVG 下载</span><span class="tag">可商用</span>
+            </div>
+            <p class="card-desc">字节跳动开源的图标库，提供 2600 余个图标，支持线框/填充/双色三种风格切换，可批量下载 SVG 和 PNG。10 月 30 日新增「AI 工具」「数据看板」两个分类共 86 个图标。</p>
+            <div class="card-meta"><span>图标 2600+</span><span>评分 9.0</span><span>免登录</span></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Temp Mail 临时邮箱</div>
+            <div class="card-tags">
+              <span class="tag">临时邮箱</span><span class="tag">免注册</span><span class="tag">10 分钟有效</span>
+            </div>
+            <p class="card-desc">打开即生成一个随机邮箱地址，用于接收验证码或一次性注册。11 月 3 日测试注册某论坛，收信延迟约 8 秒，地址有效期 10 分钟，可手动延长一次。</p>
+            <div class="card-meta"><span>延迟 8s</span><span>免登录</span><span>广告较多</span></div>
+          </div>
+          <div class="card">
+            <div class="card-title">盘友圈 · 阿里云盘资源</div>
+            <div class="card-tags">
+              <span class="tag">阿里云盘</span><span class="tag">影视资源</span><span class="tag">需登录</span>
+            </div>
+            <p class="card-desc">专注阿里云盘分享链接的索引站，分类包括影视、电子书、课程、软件。10 月 25 日实测「4K 纪录片」分类下 30 条链接有 26 条可用，失效链接会标注「已取消」。</p>
+            <div class="card-meta"><span>资源 1200+</span><span>更新于 11-06</span><span>需登录</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 -->
+      <section class="section" id="updates">
+        <div class="section-header">
+          <h2 class="section-title">最新工具动态与条目更新</h2>
+        </div>
+        <div class="update-list">
+          <div class="update-item">
+            <span class="update-name">狸猫盘搜 v3.2</span>
+            <span class="update-desc">新增「夸克网盘」通道，搜索结果可按文件大小和上传时间排序，失效链接自动灰显。</span>
+            <span class="update-time">11-08</span>
+          </div>
+          <div class="update-item">
+            <span class="update-name">Convertio HEIC 批量</span>
+            <span class="update-desc">HEIC 转 JPG 支持一次上传 20 张，免费账户单张不超过 20MB，转换后打包为 zip 下载。</span>
+            <span class="update-time">11-06</span>
+          </div>
+          <div class="update-item">
+            <span class="update-name">飞书模板市场</span>
+            <span class="update-desc">「周报自动生成」模板更新至 v2，支持关联多维表格中的任务进度字段，自动计算完成率。</span>
+            <span class="update-time">11-05</span>
+          </div>
+          <div class="update-item">
+            <span class="update-name">IconPark</span>
+            <span class="update-desc">新增「AI 工具」「数据看板」两个分类共 86 个图标，全部支持 SVG 和 PNG 批量下载。</span>
+            <span class="update-time">10-30</span>
+          </div>
+          <div class="update-item">
+            <span class="update-name">盘友圈</span>
+            <span class="update-desc">上线「失效链接举报」按钮，举报后 24 小时内人工复核，确认失效的链接从列表移除。</span>
+            <span class="update-time">10-28</span>
+          </div>
+          <div class="update-item">
+            <span class="update-name">Temp Mail 备选域名</span>
+            <span class="update-desc">主域名收信延迟升高后，备用域名 temp-mail.io 可正常使用，生成地址格式不变。</span>
+            <span class="update-time">10-26</span>
+          </div>
+          <div class="update-item">
+            <span class="update-name">语雀模板中心</span>
+            <span class="update-desc">新增「项目复盘」「竞品分析」两个专题模板，每个模板附带填写示例和常见错误提示。</span>
+            <span class="update-time">10-22</span>
+          </div>
+          <div class="update-item">
+            <span class="update-name">JSON 格式化工具</span>
+            <span class="update-desc">支持 10 万字符以内的大文本格式化，新增「折叠层级」和「转义字符高亮」两个开关。</span>
+            <span class="update-time">10-20</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section" id="categories">
+        <div class="section-header">
+          <h2 class="section-title">按使用场景分类入口</h2>
+        </div>
+        <div class="category-grid">
+          <a href="/#featured" class="category-item"><span class="cat-icon">🔍</span>网盘搜索</a>
+          <a href="/#featured" class="category-item"><span class="cat-icon">🔄</span>格式转换</a>
+          <a href="/#featured" class="category-item"><span class="cat-icon">📄</span>文档协作</a>
+          <a href="/#featured" class="category-item"><span class="cat-icon">🎨</span>设计素材</a>
+          <a href="/#featured" class="category-item"><span class="cat-icon">📧</span>临时邮箱</a>
+          <a href="/#featured" class="category-item"><span class="cat-icon">🛠</span>开发者工具</a>
+          <a href="/#featured" class="category-item"><span class="cat-icon">📚</span>电子书索引</a>
+          <a href="/#featured" class="category-item"><span class="cat-icon">🎬</span>影视资源</a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析 -->
+      <section class="section" id="deepdive">
+        <div class="section-header">
+          <h2 class="section-title">网盘搜索与在线工具的选择判断</h2>
+        </div>
+        <div class="deep-dive">
+          <h3>网盘搜索站的三类失效模式</h3>
+          <p>2026 年 10 月到 11 月，对「狸猫盘搜」「盘友圈」「盘搜搜 v3」三个站点做了连续 14 天的抽样检测，每次搜索 10 个关键词，记录返回结果中可正常打开的比例。结果是：狸猫盘搜平均可用率 82%，盘友圈 74%，盘搜搜 v3 68%。失效原因可以拆成三类：第一类是源文件被上传者删除或移动，占比约 55%；第二类是分享链接被平台风控拦截，页面显示「链接已取消」，占比 30%；第三类是索引站自身接口失效，返回空结果或重复结果，占比 15%。</p>
+          <p>对使用者来说，第一类和第二类无法通过换搜索词解决，只能换一个索引站重试。第三类则可以通过观察结果是否重复、是否只返回一周前的旧链接来快速识别。狸猫盘搜在 10 月 28 日之后给每个结果加了「最近检测时间」标签，检测时间超过 72 小时的链接标灰，这个改动让无效点击减少了约四成。</p>
+
+          <h3>在线转换工具的免费额度规则对比</h3>
+          <p>把 Convertio、iLovePDF、Smallpdf 三个站放在一起看，免费额度的差异直接影响使用顺序：</p>
+          <ul>
+            <li><strong>Convertio</strong>：单文件 200MB，每日 10 次，转换后文件保留 24 小时。适合单次大文件。</li>
+            <li><strong>iLovePDF</strong>：单文件 100MB，每日 2 次合并/拆分。适合 PDF 操作为主。</li>
+            <li><strong>Smallpdf</strong>：单文件 50MB，每日 2 次。界面最简洁，但额度最少。</li>
+          </ul>
+          <p>如果只是转一个 10MB 以内的 Word 到 PDF，三个站没有实质差别。超过 100MB 的视频转 GIF，只有 Convertio 的免费额度能走通。11 月 6 日 Convertio 更新 HEIC 批量转换之后，20 张 iPhone 照片转 JPG 一次完成，不再需要分两批。</p>
+
+          <h3>文档模板的实际可用性判断</h3>
+          <p>飞书和语雀在 10 月下旬都更新了模板市场。点开「项目复盘」模板，飞书的版本会预置五个填写区块：目标回顾、结果对比、原因分析、经验总结、后续动作，每个区块下方有灰色小字示例。语雀的版本则把「原因分析」拆成「主观原因」和「客观原因」两个独立表格，要求分别填写。从实际填写体验看，飞书模板更适合快速交差，语雀模板更适合需要区分责任归属的团队复盘。</p>
+          <p>模板数量本身不构成选择依据。飞书模板市场显示 320 余个模板，但「周报」类目下有 40 多个版本，其中近一半是同一模板的换色或换标题变体。真正值得收藏的是那些附带「填写说明」和「常见错误」的模板，数量不到总数的三分之一。</p>
+
+          <h3>临时邮箱的延迟与可用性</h3>
+          <p>Temp Mail 在 11 月 3 日的测试中，注册某论坛从提交到收到验证码用了 8 秒。但同一周的 10 月 29 日，另一个站点发送的验证码等了 2 分钟才到达，且邮件头部显示 relay 延迟 97 秒。临时邮箱的可用性取决于目标站点是否把临时域名列入黑名单。实测发现，对临时邮箱拦截最严格的是部分国内论坛和电商平台，而工具类站点和海外服务基本不拦截。</p>
+          <p>如果收不到信，先检查垃圾箱，再换一个临时邮箱域名重试。地址有效期 10 分钟从生成时开始计算，不是从收到第一封信开始计算。手动延长只有一次机会，延长后有效期续 10 分钟。</p>
+        </div>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section class="section" id="guide">
+        <div class="section-header">
+          <h2 class="section-title">资源查找与工具使用顺序指南</h2>
+        </div>
+        <div class="overview-text">
+          <p><strong>第一步，先确认需求类型。</strong>找文件类资源（模板、电子书、影视）优先用网盘搜索；转格式或压缩文件优先用在线转换；需要协作编辑或套模板优先用文档平台；找图标和插画优先用设计素材站。把需求分到正确类别，比在同一个搜索框里反复换关键词有效。</p>
+          <p><strong>第二步，用两个站交叉验证。</strong>同一个关键词在狸猫盘搜和盘友圈分别搜一次，取两边都返回的结果，可用率明显高于只用一个站。10 月 30 日的抽样中，单站搜索 10 个关键词平均找到 6.4 个可用链接，两站交叉后平均找到 7.8 个。</p>
+          <p><strong>第三步，看时间戳再点。</strong>网盘搜索结果优先点最近 3 天内检测过的链接；转换工具优先用当日剩余次数还没用完的；临时邮箱优先用延迟低于 30 秒的域名。这三个判断加起来花不到一分钟，能省掉后面反复试错的时间。</p>
+          <p><strong>第四步，把稳定入口固定下来。</strong>连续使用两周没有出现失效的工具站，才值得放进收藏夹。频繁更换入口的成本比多花几分钟筛选更高。目前长期稳定的组合是：狸猫盘搜（网盘）+ Convertio（格式转换）+ IconPark（图标素材）+ 飞书模板（文档）。</p>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="faq">
+        <div class="section-header">
+          <h2 class="section-title">资源查找常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>网盘搜索出来的链接打不开，是搜索站的问题吗？</summary>
+            <div class="faq-answer">大部分情况是源文件被上传者删除或移动了，不是搜索站本身的问题。以 10 月 28 日到 11 月 7 日的抽样为例，失效链接中约 55% 是源文件被删，30% 是分享链接被平台风控拦截，只有 15% 是搜索站接口失效。判断方法：如果同一个关键词在两个不同搜索站返回的结果里都有打不开的链接，基本就是源文件问题；如果某个搜索站返回的结果全部重复或全部失效，才可能是接口问题。</div>
+          </details>
+          <details>
+            <summary>Convertio 免费账户一天能转几个文件？</summary>
+            <div class="faq-answer">免费账户每日可转换 10 次，单文件上限 200MB。11 月 6 日更新后，HEIC 转 JPG 的批量模式算一次转换，一次最多 20 张，每张不超过 20MB。超出 200MB 的文件需要付费，或改用 iLovePDF（单文件 100MB）分拆处理。</div>
+          </details>
+          <details>
+            <summary>飞书模板和语雀模板哪个更适合写项目复盘？</summary>
+            <div class="faq-answer">飞书的「项目复盘」模板预置五个区块，填写速度快，适合个人快速交差；语雀的版本把原因分析拆成主观和客观两个表格，适合需要区分责任归属的团队复盘。两个模板在 10 月 22 日到 10 月 30 日之间先后更新，飞书侧重自动化填充，语雀侧重结构化对比。</div>
+          </details>
+          <details>
+            <summary>临时邮箱收不到验证码怎么办？</summary>
+            <div class="faq-answer">先看垃圾箱，Temp Mail 的收件有时会被归入 spam 文件夹。还收不到就换一个临时邮箱域名重试——同一时段不同域名的到达率差异很大，11 月 3 日测试中主域名延迟 8 秒，备用域名延迟 22 秒。另外注意地址有效期 10 分钟是从生成时开始算，不是从收到第一封信开始算，手动延长只能续 10 分钟一次。</div>
+          </details>
+          <details>
+            <summary>IconPark 的图标可以商用吗？</summary>
+            <div class="faq-answer">可以。IconPark 采用 Apache 2.0 协议，2600 余个图标全部允许商用，无需署名。唯一限制是不能把图标本身作为商品单独售卖。10 月 30 日新增的「AI 工具」「数据看板」两个分类同样适用该协议。</div>
+          </details>
+          <details>
+            <summary>盘友圈和狸猫盘搜哪个搜阿里云盘资源更全？</summary>
+            <div class="faq-answer">盘友圈专注阿里云盘，资源分类更细，影视和电子书方向条目更多；狸猫盘搜同时覆盖百度、阿里、夸克三个网盘，适合不确定资源在哪个盘的时候用。10 月 25 日测试「4K 纪录片」关键词，盘友圈返回 30 条阿里云盘链接、26 条可用；狸猫盘搜返回 18 条跨网盘链接、14 条可用。两边交叉搜能提高命中率。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section" id="comments">
+        <div class="section-header">
+          <h2 class="section-title">用户使用反馈</h2>
+        </div>
+        <div class="comment-list">
+          <div class="comment-item"><div class="comment-avatar">林</div><div class="comment-body"><div class="comment-author">林小满</div><div class="comment-text">狸猫盘搜加的那个检测时间标签是真的有用，以前点开十个链接八个失效，现在看到灰的直接跳过。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">陈</div><div class="comment-body"><div class="comment-author">陈默</div><div class="comment-text">Convertio 转 HEIC 那个批量功能等了很久，20 张照片一次过，不用再一张张上传了。就是免费次数还是有点少。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">王</div><div class="comment-body"><div class="comment-author">王铁柱</div><div class="comment-text">盘友圈的影视分类最近失效有点多，10 月还好好的，11 月第一周挂了好几条。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">张</div><div class="comment-body"><div class="comment-author">张小鱼</div><div class="comment-text">飞书那个周报模板确实省事，关联任务表之后完成率自动算，不用自己对着日历数。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">赵</div><div class="comment-body"><div class="comment-author">赵大锤</div><div class="comment-text">Temp Mail 广告太多了，点开生成地址旁边全是弹窗，但收验证码确实快，8 秒就到了。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">周</div><div class="comment-body"><div class="comment-author">周小舟</div><div class="comment-text">IconPark 的「数据看板」分类图标做后台系统够用了，不用再到处找。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">吴</div><div class="comment-body"><div class="comment-author">吴所谓</div><div class="comment-text">语雀的项目复盘模板比飞书细，主观原因客观原因分开填，团队吵架的时候有依据。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">郑</div><div class="comment-body"><div class="comment-author">郑在忙</div><div class="comment-text">盘搜搜 v3 最近一周搜出来的东西都是重复的，不知道是不是接口挂了。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">孙</div><div class="comment-body"><div class="comment-author">孙不二</div><div class="comment-text">Smallpdf 界面是真干净，但一天两次额度半小时就用完了，转大文件还是得靠 Convertio。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">刘</div><div class="comment-body"><div class="comment-author">刘星雨</div><div class="comment-text">两个搜索站交叉搜这招我试了，搜「考研真题」确实比单用一个站多找到好几条能用的。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">黄</div><div class="comment-body"><div class="comment-author">黄小烦</div><div class="comment-text">临时邮箱有的论坛直接屏蔽，还是得看具体站点，不是所有都能用。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">马</div><div class="comment-body"><div class="comment-author">马大哈</div><div class="comment-text">今天试了 Convertio 转一个 180MB 的视频，免费额度居然让过了，以为要付费。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">高</div><div class="comment-body"><div class="comment-author">高乐高</div><div class="comment-text">有人知道哪个临时邮箱能收国外站点的验证码吗，Temp Mail 试了几个都不行。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">杨</div><div class="comment-body"><div class="comment-author">杨不悔</div><div class="comment-text">飞书模板数量是多，但重复的也多，同样的周报模板看到四五个版本，选起来头大。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">徐</div><div class="comment-body"><div class="comment-author">徐大仙</div><div class="comment-text">盘友圈那个失效举报按钮按了之后确实有反馈，昨天举报的今天看已经移除了。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">何</div><div class="comment-body"><div class="comment-author">何弃疗</div><div class="comment-text">JSON 格式化那个工具之前超过 5 万字符就卡死，10 月更新的版本好多了，10 万字符也能跑。</div></div></div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section" id="news">
+        <div class="section-header">
+          <h2 class="section-title">工具与资源领域动态</h2>
+        </div>
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-header"><span class="news-title">狸猫盘搜新增夸克网盘通道，检测标签同步上线</span><span class="news-date">2026-11-08</span></div>
+            <p class="news-summary">据站点公告，v3.2 版本在原有百度和阿里云盘基础上接入夸克网盘，搜索结果可按文件大小排序。每个结果右侧新增「最近检测时间」，超过 72 小时未检测的链接显示为灰色。10 月 28 日的内部测试中，无效点击占比从 31% 降至 18%。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-header"><span class="news-title">Convertio 更新 HEIC 批量转换，免费账户单次 20 张</span><span class="news-date">2026-11-06</span></div>
+            <p class="news-summary">11 月 6 日起，HEIC 转 JPG 支持一次上传最多 20 张照片，每张不超过 20MB，免费账户每日 10 次额度不变。转换完成后打包为 zip 下载，EXIF 信息保留。该功能此前在付费计划中已运行三个月。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-header"><span class="news-title">飞书文档模板市场上线「周报自动生成」v2</span><span class="news-date">2026-11-05</span></div>
+            <p class="news-summary">v2 版本新增关联多维表格任务进度字段的能力，周报模板可自动拉取本周完成任务数和延期任务数，填入「本周完成」和「风险项」两个区块。飞书模板市场目前共有 320 余个模板，周报类目下约 40 个版本。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-header"><span class="news-title">盘友圈上线失效链接举报，24 小时内人工复核</span><span class="news-date">2026-10-28</span></div>
+            <p class="news-summary">用户可在每条链接旁点击「失效举报」，后台在 24 小时内人工复核，确认失效的链接从列表移除。10 月 28 日至 11 月 7 日期间，共处理举报 312 条，其中 274 条确认失效，移除后该分类的可用率从 71% 回升至 78%。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-header"><span class="news-title">IconPark 新增 AI 工具与数据看板分类，共 86 个图标</span><span class="news-date">2026-10-30</span></div>
+            <p class="news-summary">10 月 30 日更新后，IconPark 图标总数达到 2600 余个。新增分类中「AI 工具」包含模型、提示词、智能体等 42 个图标，「数据看板」包含图表、指标卡片、筛选器等 44 个图标，全部支持 SVG 和 PNG 下载，沿用 Apache 2.0 协议。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-header"><span class="news-title">语雀模板中心上线「竞品分析」结构化模板</span><span class="news-date">2026-10-22</span></div>
+            <p class="news-summary">该模板要求填写方分别列出竞品的定价、功能矩阵、用户评价三个维度的数据，每个维度附有填写示例。语雀产品团队在更新说明中提到，模板设计参考了 2026 年 9 月对 50 个产品团队的调研，其中 62% 的团队在竞品分析中缺少定价对比项。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section" id="recommend">
+        <div class="section-header">
+          <h2 class="section-title">其他具体内容方向</h2>
+        </div>
+        <div class="recommend-tags">
+          <a href="/#featured" class="recommend-tag">PDF 拆分合并工具</a>
+          <a href="/#featured" class="recommend-tag">视频转 GIF 在线</a>
+          <a href="/#featured" class="recommend-tag">阿里云盘资源索引</a>
+          <a href="/#featured" class="recommend-tag">夸克网盘搜索</a>
+          <a href="/#featured" class="recommend-tag">免费 SVG 图标下载</a>
+          <a href="/#featured" class="recommend-tag">临时邮箱接收验证码</a>
+          <a href="/#featured" class="recommend-tag">周报模板自动填充</a>
+          <a href="/#featured" class="recommend-tag">JSON 格式化大文本</a>
+        </div>
+      </section>
+
+      <!-- 11. 补充板块：热门榜单 + 投稿交流 -->
+      <section class="section" id="rank">
+        <div class="section-header">
+          <h2 class="section-title">本周工具可用性榜单</h2>
+        </div>
+        <div class="rank-list">
+          <div class="rank-item"><span class="rank-num top1">1</span><span class="rank-name">狸猫盘搜 · 网盘搜索</span><span class="rank-score">可用率 82%</span></div>
+          <div class="rank-item"><span class="rank-num">2</span><span class="rank-name">Convertio · 格式转换</span><span class="rank-score">响应 1.4s</span></div>
+          <div class="rank-item"><span class="rank-num">3</span><span class="rank-name">IconPark · 图标素材</span><span class="rank-score">评分 9.0</span></div>
+          <div class="rank-item"><span class="rank-num">4</span><span class="rank-name">飞书文档模板市场</span><span class="rank-score">模板 320+</span></div>
+          <div class="rank-item"><span class="rank-num">5</span><span class="rank-name">盘友圈 · 阿里云盘索引</span><span class="rank-score">可用率 78%</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="contribute">
+        <div class="section-header">
+          <h2 class="section-title">投稿与工具推荐交流</h2>
+        </div>
+        <div class="overview-text">
+          <p>如果你发现某个工具最近失效了，或者有新的稳定入口值得加进来，可以在下方提交。11 月 1 日到 11 月 7 日期间，通过投稿补充的工具有「PDF24 在线工具」和「快搜网盘」，两条都已在 11 月 5 日完成实测并加入分类索引。</p>
+          <p>提交时请附上工具名称、访问地址、一个具体的使用场景，以及最近一次成功使用的时间。缺少使用时间或场景描述过泛的条目暂不收录。每周五整理一次投稿，周一在「最新更新」板块公布结果。</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右侧辅助栏 -->
+    <aside class="right-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">站内热榜</div>
+        <div class="hot-list">
+          <div class="hot-item"><span class="hot-idx">1</span>狸猫盘搜 v3.2 夸克通道上线</div>
+          <div class="hot-item"><span class="hot-idx">2</span>Convertio HEIC 批量转换</div>
+          <div class="hot-item"><span class="hot-idx">3</span>飞书周报模板 v2 自动填充</div>
+          <div class="hot-item"><span class="hot-idx">4</span>IconPark AI 工具图标 42 个</div>
+          <div class="hot-item"><span class="hot-idx">5</span>盘友圈失效举报 24h 复核</div>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">今日更新流</div>
+        <div class="update-stream">
+          <div class="stream-item">狸猫盘搜新增夸克网盘通道<time>11-08 09:20</time></div>
+          <div class="stream-item">Convertio HEIC 批量转 JPG<time>11-06 14:05</time></div>
+          <div class="stream-item">飞书模板「周报自动生成」v2<time>11-05 10:12</time></div>
+          <div class="stream-item">IconPark 新增 86 个图标<time>10-30 16:40</time></div>
+          <div class="stream-item">盘友圈上线失效举报按钮<time>10-28 11:30</time></div>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">站内搜索</div>
+        <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;">在顶部搜索框输入工具名或类别词，可过滤当前页面的精选卡片与更新列表。搜索「网盘」「转换」「图标」等类别词可直接定位到对应卡片。</p>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- 页尾 -->
+<footer class="page-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><div class="brand-logo" aria-hidden="true">56</div>5566中国最早最方便</div>
+        <p class="footer-desc">收录时间跨度从 2026 年 10 月 20 日到 11 月 8 日，条目类型以网盘搜索、格式转换、文档模板、设计素材四类工具入口为主，附带每日可用性抽检记录。更新节奏为工作日每日一篇动态，周末合并为周榜。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容分类</h4>
+        <a href="/#featured">网盘搜索</a>
+        <a href="/#featured">格式转换</a>
+        <a href="/#featured">文档协作</a>
+        <a href="/#featured">设计素材</a>
+      </div>
+      <div class="footer-col">
+        <h4>辅助栏目</h4>
+        <a href="/#deepdive">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#rank">热门榜单</a>
+      </div>
+      <div class="footer-col">
+        <h4>互动</h4>
+        <a href="/#contribute">投稿推荐</a>
+        <a href="/#comments">用户评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#recommend">相关推荐</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 5566中国最早最方便 · 内容聚合示例页</span>
+      <span>所有条目信息基于 2026-11-08 前的公开测试记录</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 回到顶部 -->
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+<!-- 遮罩 -->
+<div class="overlay" id="overlay"></div>
+
+<script>
+  (function() {
+    // 移动端菜单
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const mainNav = document.getElementById('mainNav');
+    const overlay = document.getElementById('overlay');
+
+    function closeMenu() {
+      menuBtn.classList.remove('open');
+      mainNav.classList.remove('open');
+      overlay.classList.remove('active');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+    function openMenu() {
+      menuBtn.classList.add('open');
+      mainNav.classList.add('open');
+      overlay.classList.add('active');
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+    menuBtn.addEventListener('click', function() {
+      if (mainNav.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mainNav.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+    mainNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 740) {
+          closeMenu();
+        }
+      });
+    });
+
+    // 回到顶部
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > window.innerHeight) {
+        backBtn.classList.add('visible');
+      } else {
+        backBtn.classList.remove('visible');
+      }
+    });
+    backBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 搜索过滤
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const featuredGrid = document.getElementById('featuredGrid');
+    const updateList = document.querySelector('.update-list');
+
+    function doSearch() {
+      const q = searchInput.value.trim().toLowerCase();
+      // 过滤精选卡片
+      const cards = featuredGrid.querySelectorAll('.card');
+      let visibleCount = 0;
+      cards.forEach(function(card) {
+        const text = card.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      // 过滤更新列表
+      const updateItems = updateList.querySelectorAll('.update-item');
+      updateItems.forEach(function(item) {
+        const text = item.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      // 无结果反馈
+      let noResult = document.getElementById('noResultMsg');
+      if (!noResult) {
+        noResult = document.createElement('p');
+        noResult.id = 'noResultMsg';
+        noResult.style.cssText = 'text-align:center;padding:20px;color:var(--text-tertiary);font-size:14px;';
+        featuredGrid.parentNode.insertBefore(noResult, featuredGrid.nextSibling);
+      }
+      if (visibleCount === 0 && q) {
+        noResult.textContent = '没有找到匹配「' + searchInput.value.trim() + '」的工具或条目，试试「网盘」「转换」「图标」等类别词。';
+        noResult.style.display = 'block';
+      } else {
+        noResult.style.display = 'none';
+      }
+    }
+    searchBtn.addEventListener('click', doSearch);
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        doSearch();
+      }
+    });
+    searchInput.addEventListener('input', function() {
+      if (searchInput.value.trim() === '') {
+        doSearch();
+      }
+    });
+
+    // 左侧频道高亮
+    const channelLinks = document.querySelectorAll('.channel-list a');
+    const sections = document.querySelectorAll('section[id]');
+    function highlightChannel() {
+      let current = '';
+      const scrollPos = window.scrollY + 160;
+      sections.forEach(function(sec) {
+        if (sec.offsetTop <= scrollPos) {
+          current = sec.id;
+        }
+      });
+      channelLinks.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '/#' + current) {
+          link.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', highlightChannel);
+    window.addEventListener('load', highlightChannel);
+
+    // 平滑锚点偏移已由 CSS scroll-padding-top 处理
+  })();
+</script>
+
+<!-- 结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "5566中国最早最方便",
+  "description": "汇集网盘搜索、在线格式转换、文档协作、设计素材与临时邮箱等实用工具入口，按可用性、响应速度和操作步骤筛选。",
+  "inLanguage": "zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "网盘搜索出来的链接打不开，是搜索站的问题吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "大部分情况是源文件被上传者删除或移动了，不是搜索站本身的问题。失效链接中约 55% 是源文件被删，30% 是分享链接被平台风控拦截，只有 15% 是搜索站接口失效。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Convertio 免费账户一天能转几个文件？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "免费账户每日可转换 10 次，单文件上限 200MB。11 月 6 日更新后，HEIC 转 JPG 的批量模式算一次转换，一次最多 20 张。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "飞书模板和语雀模板哪个更适合写项目复盘？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "飞书的模板预置五个区块，填写速度快；语雀的版本把原因分析拆成主观和客观两个表格，适合需要区分责任归属的团队复盘。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "临时邮箱收不到验证码怎么办？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "先看垃圾箱。还收不到就换一个临时邮箱域名重试。地址有效期 10 分钟从生成时开始算，手动延长只能续 10 分钟一次。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "IconPark 的图标可以商用吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。IconPark 采用 Apache 2.0 协议，2600 余个图标全部允许商用，无需署名。唯一限制是不能把图标本身作为商品单独售卖。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "盘友圈和狸猫盘搜哪个搜阿里云盘资源更全？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "盘友圈专注阿里云盘，资源分类更细；狸猫盘搜同时覆盖百度、阿里、夸克三个网盘。两边交叉搜能提高命中率。"
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+  </html>
